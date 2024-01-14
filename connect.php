@@ -1,8 +1,8 @@
 <?php 
 $host = "localhost";
-$user = "guest1";
+$user = "guest";
 $password = "guest";
-$database = "coding";
+$database = "toy_project";
 
 $conn = mysqli_connect($host, $user, $password, $database);
 ?>
