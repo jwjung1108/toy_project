@@ -115,7 +115,7 @@ $result = mysqli_query($conn, $sql);
 
                 <!-- Right-aligned links -->
                 <ul class="navbar-nav ms-auto">
-                    <?php if (isset($_SESSION['userid'])) { ?>
+                    <?php if (isset($_SESSION['UserID'])) { ?>
                         <li class="nav-item">
                             <a class="nav-link" href="/MyPage/mypage.php">마이페이지</a>
                         </li>
