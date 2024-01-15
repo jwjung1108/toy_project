@@ -129,7 +129,7 @@ $result = mysqli_query($conn, $sql);
                         <a class="nav-link" href="/board/QandA/list_qboard.php">Q&A</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/board/reference/list_reference.php">자료실</a>
+                        <a class="nav-link" href="/board/reference/list_rboard.php">자료실</a>
                     </li>
                 </ul>
 

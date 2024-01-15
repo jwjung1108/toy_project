@@ -34,7 +34,7 @@ session_start();
             window.location.href = "/board/QandA/list_qboard.php";
         }
         function goToReferencePage() {
-            window.location.href = "/board/reference/list_reference.php";
+            window.location.href = "/board/reference/list_rboard.php";
         }
         function logout() {
             const data = confirm("로그아웃 하시겠습니까?");

@@ -32,10 +32,10 @@ switch ($sort) {
 }
 
 // SQL 쿼리문 수정
-$sql = "SELECT reference.*, users.user_rank
-        FROM reference
+$sql = "SELECT r_board.*, users.user_rank
+        FROM r_board
         JOIN users ON reference.username = users.id
-        WHERE reference.visible = 1 $orderBy";
+        $orderBy";
 
 $result = mysqli_query($conn, $sql);
 ?>
@@ -84,6 +84,7 @@ $result = mysqli_query($conn, $sql);
         .sortable {
             cursor: pointer;
         }
+
         .tier-icon {
             width: 20px;
             /* 이미지의 크기 조절 */
@@ -124,13 +125,13 @@ $result = mysqli_query($conn, $sql);
                         <a class="nav-link" href="/board/QandA/list_qboard.php">Q&A</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/board/reference/list_reference.php">자료실</a>
+                        <a class="nav-link" href="/board/reference/list_rboard.php">자료실</a>
                     </li>
                 </ul>
 
                 <!-- Right-aligned links -->
                 <ul class="navbar-nav ms-auto">
-                    <?php if (isset($_SESSION['userId'])) { ?>
+                    <?php if (isset($_SESSION['UserID'])) { ?>
                         <li class="nav-item">
                             <a class="nav-link" href="/MyPage/mypage.php">마이페이지</a>
                         </li>
@@ -167,7 +168,7 @@ $result = mysqli_query($conn, $sql);
             <form action="../search_result.php" method="get">
                 <select name="catgo">
                     <option value="title">제목</option>
-                    <option value="username">글쓴이</option>
+                    <option value="userid">글쓴이</option>
                     <option value="board">내용</option>
                 </select>
                 <input type="text" name="search" required="required" />
@@ -227,7 +228,7 @@ $result = mysqli_query($conn, $sql);
                             </td>
                             <td class="title-cell" style="<?php echo $color; ?>">
                                 <img src="<?php echo $tierIconPath; ?>" alt="tier" class="tier-icon" />
-                                <?php echo $row['username']; ?>
+                                <?php echo $_SESSION['UserName']; ?>
                             </td>
                             <td class="title-cell">
                                 <?php echo $row['created']; ?>
