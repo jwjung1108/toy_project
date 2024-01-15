@@ -31,8 +31,8 @@ if ($id == null) {
     $passwordResult = password_verify($password, $hashedPassword);
     if ($passwordResult === true) {
         session_start();
-        $_SESSION['userId'] = $row['id'];
-        $_SESSION['userName'] = $row['nickname'];
+        $_SESSION['UserID'] = $row['id'];
+        $_SESSION['UserName'] = $row['nickname'];
         if($row['authority'] == 2){
             $_SESSION['authority'] = 'admin';
         }

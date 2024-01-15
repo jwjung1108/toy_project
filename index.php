@@ -25,7 +25,7 @@ session_start();
             window.location.href = "/join/signup.php";
         }
         function goTocommonBoardPage() {
-            window.location.href = "/board/nomal/list_board.php";
+            window.location.href = "/board/standard/list_board.php";
         }
         function goTonotificationBoardPage() {
             window.location.href = "/board/notification/list_nboard.php";
@@ -159,8 +159,8 @@ session_start();
                 <?php
                 include './connect.php'; // 데이터베이스 연결 정보 포함
                 
-                // 최신 게시글 5개를 가져오는 쿼리
-                $sql = 'SELECT * FROM board WHERE visible = 1 AND notification = 1 AND QandA = 0 ORDER BY important DESC, created DESC LIMIT 5';
+                // 최신 공지사항 5개를 가져오는 쿼리
+                $sql = 'SELECT * FROM n_board ORDER BY important DESC, created DESC LIMIT 5';
                 $result = mysqli_query($conn, $sql); ?>
 
                 <?php
