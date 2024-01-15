@@ -63,7 +63,7 @@ if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
     $sql = "
         INSERT INTO n_board
         (title, board, userid, views, likes, created, filepath, filename, important)
-        VALUES ('$title', '$board', '$userId', '$view', '$like', NOW(), '$fileDestination', '$fileName', '$important')
+        VALUES ('$title', '$board', '$userid', '$view', '$like', NOW(), '$fileDestination', '$fileName', '$important')
     ";
 
     $result = mysqli_query($conn, $sql);
