@@ -29,7 +29,7 @@ switch ($sort) {
         break;
 }
 
-$sql = "SELECT n_board.*, users.user_rank
+$sql = "SELECT n_board.*, users.user_rank, users.nickname
         FROM n_board
         JOIN users ON n_board.userid = users.id
         ORDER BY n_board.important DESC, n_board.$orderBy DESC";
@@ -243,7 +243,7 @@ $result = mysqli_query($conn, $sql);
                             </td>
                             <td class="title-cell" style="<?php echo $color; ?>">
                                 <img src="<?php echo $tierIconPath; ?>" alt="tier" class="tier-icon" />
-                                <?php echo $_SESSION['UserName']; ?>
+                                <?php echo $row['nickname']; ?>
                             </td>
                             <td class="title-cell">
                                 <?php echo $row['created']; ?>
