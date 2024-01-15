@@ -2,8 +2,8 @@
 include '../../connect.php';
 include '../point/WriteCoPoint.php';
 session_start();
-$userId = $_SESSION['userId'];
-$sql = "select * from users where id = '$userId'";
+$userid = $_SESSION['UserID'];
+$sql = "select * from users where id = '$userid'";
 $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 
 if ($row['authority'] != 2) {
@@ -19,8 +19,8 @@ if ($row['authority'] != 2) {
 $number = $_GET['number'];
 $sql = "
     insert into q_comment
-    (userID, boardNumber, text, created, visible)
-    values('$userId','$number','{$_POST['text']}', NOW(), 1
+    (userID, boardNumber, text, created)
+    values('$userid','$number','{$_POST['text']}', NOW()
     )";
 
 $result = mysqli_query($conn, $sql);

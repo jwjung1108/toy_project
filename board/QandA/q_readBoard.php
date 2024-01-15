@@ -342,9 +342,8 @@ session_start();
             <div class="text-center">
                 <!-- 댓글 작성 버튼 -->
                 <?php
-                session_start();
                 $userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
-                if ($userId != NULL) {
+                if ($userid != NULL) {
                     $sql = "select authority from users where id='$userid'";
                     $row = mysqli_fetch_array(mysqli_query($conn, $sql));
                     if ($_SESSION['authority'] == "admin") {
