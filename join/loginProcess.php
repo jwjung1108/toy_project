@@ -36,6 +36,9 @@ if ($id == null) {
         if($row['authority'] == 2){
             $_SESSION['authority'] = 'admin';
         }
+        else {
+            $_SESSION['authority'] = 'nomal';
+        }
         ?>
         <script>
             alert("로그인에 성공하였습니다.")
