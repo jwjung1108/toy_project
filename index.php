@@ -61,7 +61,7 @@ session_start();
 
             <a class="navbar-brand" href="#">학습 커뮤니티</a>
             <div class="d-flex align-items-center">
-                <?php if (isset($_SESSION['userID'])) { ?>
+                <?php if (isset($_SESSION['UserID'])) { ?>
                 <span class="navbar-text mr-3">
                     <?php echo $_SESSION['UserName']; ?> 님 환영합니다
                 </span>
