@@ -129,9 +129,9 @@ session_start();
 <body>
     <?php
     $number = $_GET['number']; /* bno함수에 title값을 받아와 넣음*/
-    $board = mysqli_fetch_array(mysqli_query($conn, "select * from board where number ='" . $number . "'"));
+    $board = mysqli_fetch_array(mysqli_query($conn, "select * from n_board where number ='" . $number . "'"));
 
-    $check_table = (mysqli_query($conn, "select * from time where userID='" . $_SESSION['userId'] . "' and boardNumber = '$number'"));
+    $check_table = (mysqli_query($conn, "select * from time where userid='" . $_SESSION['UserID'] . "' and boardNumber = '$number'"));
     $row = mysqli_fetch_array($check_table);
 
     $result = mysqli_num_rows($check_table) > 0;
@@ -140,7 +140,7 @@ session_start();
     $current_time = time();
 
     // time table access 시간
-    $db_access = mysqli_fetch_array(mysqli_query($conn, "select access from time where boardNumber=$number and userID='{$_SESSION['userId']}'"));
+    $db_access = mysqli_fetch_array(mysqli_query($conn, "select access from n_time where boardnumber=$number and userid='{$_SESSION['UserID']}'"));
 
     $fomater = "Y-m-d H:i:s";
     $view = $board['views'];
@@ -148,16 +148,16 @@ session_start();
     if ($result) {
         if ($current_time - strtotime($db_access['access']) > 3600) {
             $view = $view + 1;
-            if (mysqli_query($conn, "update board set views = '" . $view . "' where number = '" . $number . "'")) {
+            if (mysqli_query($conn, "update n_board set views = '" . $view . "' where number = '" . $number . "'")) {
                 $current_time = date($fomater, $current_time);
-                mysqli_query($conn, "update time set access = '$current_time' where boardNumber = $number and userID = '{$_SESSION['userId']}'");
+                mysqli_query($conn, "update time set access = '$current_time' where boardnumber = $number and userid = '{$_SESSION['UserID']}'");
             }
         }
     } else {
         $view = $view + 1;
         $current_time = date($fomater, $current_time);
-        mysqli_query($conn, "insert into time(userID,boardNumber, access) values('{$_SESSION['userId']}', $number, '$current_time')");
-        mysqli_query($conn, "update board set views = '" . $view . "' where number = '" . $number . "'");
+        mysqli_query($conn, "insert into n_time(userid,boardnumber, access) values('{$_SESSION['UserID']}', $number, '$current_time')");
+        mysqli_query($conn, "update n_board set views = '" . $view . "' where number = '" . $number . "'");
     }
     ?>
     <!-- 글 불러오기 -->
@@ -197,11 +197,6 @@ session_start();
     </div>
 
     <!-- 댓글 -->
-
-
-
-
-
 
     </div>
 </body>
