@@ -171,7 +171,7 @@ $result = mysqli_query($conn, $sql);
             <form action="../search_result.php" method="get" onsubmit="return validateForm()">
                 <select name="catgo">
                     <option value="title">제목</option>
-                    <option value="username">글쓴이</option>
+                    <option value="userid">글쓴이</option>
                     <option value="board">내용</option>
                 </select>
                 <input type="text" name="search" required="required" />
@@ -243,7 +243,7 @@ $result = mysqli_query($conn, $sql);
                             </td>
                             <td class="title-cell" style="<?php echo $color; ?>">
                                 <img src="<?php echo $tierIconPath; ?>" alt="tier" class="tier-icon" />
-                                <?php echo $row['username']; ?>
+                                <?php echo $_SESSION['UserName']; ?>
                             </td>
                             <td class="title-cell">
                                 <?php echo $row['created']; ?>
