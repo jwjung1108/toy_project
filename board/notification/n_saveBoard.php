@@ -20,6 +20,7 @@ $like = 0;
 $title = $_POST['title'];
 $board = $_POST['board'];
 $important = $_POST['important'];
+$nickname = $_SESSON['UserName'];
 
 if($important != NULL){
     $important = 1;
@@ -62,8 +63,8 @@ if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
     // 파일 업로드 성공한 경우
     $sql = "
         INSERT INTO n_board
-        (title, board, userid, views, likes, created, filepath, filename, important)
-        VALUES ('$title', '$board', '$userid', '$view', '$like', NOW(), '$fileDestination', '$fileName', '$important')
+        (title, board, userid, nickname, views, likes, created, filepath, filename, important)
+        VALUES ('$title', '$board', '$userid', '$nickname', '$view', '$like', NOW(), '$fileDestination', '$fileName', '$important')
     ";
 
     $result = mysqli_query($conn, $sql);

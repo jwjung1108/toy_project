@@ -29,7 +29,7 @@ switch ($sort) {
         break;
 }
 
-$sql = "SELECT n_board.*, users.user_rank, users.nickname
+$sql = "SELECT n_board.*, users.user_rank
         FROM n_board
         JOIN users ON n_board.userid = users.id
         ORDER BY n_board.important DESC, n_board.$orderBy DESC";
