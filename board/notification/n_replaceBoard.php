@@ -24,7 +24,7 @@ if($_SESSION['authority'] != 'admin'){
 </head>
 <body>
     <?php
-            $sql = "select authority from users where id='$userId'";
+            $sql = "select authority from users where id='$userid'";
             $row = mysqli_fetch_array(mysqli_query($conn, $sql));
             if ($row['authority'] == 2) {
                 ?><a href="n_writeForm.php" class="btn btn-primary">작성</a>
@@ -35,7 +35,7 @@ if($_SESSION['authority'] != 'admin'){
 
     
         $number = $_GET['number'];
-        $row = mysqli_fetch_array(mysqli_query($conn,"select * from board where number= '$number'"));
+        $row = mysqli_fetch_array(mysqli_query($conn,"select * from n_board where number= '$number'"));
         $title = $row['title'];
         $board = $row['board'];
     ?>
