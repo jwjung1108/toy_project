@@ -305,9 +305,7 @@ session_start();
                     <?php
                     $i = 1;
                     while ($row = mysqli_fetch_array($result)) {
-                        if ($row['visible'] == 0)
-                            continue;
-                        ?>
+                    ?>
                         <tr>
                             <th scope="row">
                                 <?php echo $i++; ?>
