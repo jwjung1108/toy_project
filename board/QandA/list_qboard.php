@@ -174,12 +174,6 @@ $result = mysqli_query($conn, $sql);
             <tbody>
                 <?php
 
-                if ($_SESSION['authority'] != NULL) {
-                    $check_user = $_SESSION['authority'];
-                } else {
-                    $check_user = '';
-                }
-
                 $i = 1;
                 while ($row = mysqli_fetch_array($result)) {
                     // 비밀글인 경우, authority가 2인 사용자나 작성자만 볼 수 있도록 체크
@@ -215,7 +209,7 @@ $result = mysqli_query($conn, $sql);
                         </th>
                         <?php
                         if ($row['isSecret'] == 1) {
-                            if ($row['userid'] != $userid && $check_user != 'admin') {
+                            if ($row['userid'] != $userid && $row['authority'] != 'admin') {
                                 ?>
                                 <td>
                                     <?php echo "비밀글입니다."; ?>
