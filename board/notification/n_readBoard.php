@@ -179,8 +179,14 @@ session_start();
         <div id="bo_ser">
             <ul>
                 <li><a href="/">[목록으로]</a></li>
-                <li><a href="n_replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
-                <li><a href="n_deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
+                <?php
+                if ($_SESSION['UserID'] == $board['userid']) { ?>
+                    <li><a href="n_replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
+                    <li><a href="n_deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
+                    <?php
+                }
+                ?>
+
             </ul>
         </div>
         <div>
