@@ -1,13 +1,13 @@
 <?php
 session_start();
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+$userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
 include '../../connect.php';
 
-if ($userId == '') {
+if ($userid == '') {
     ?>
     <script>
         alert("로그인을 해주세요.");
-        location.href = "./list_qboard.php";
+        location.href = "./list_nboard.php";
     </script>
     <?php
     exit();
@@ -19,11 +19,13 @@ $like = 0;
 
 $title = $_POST['title'];
 $board = $_POST['board'];
-$isSecret = $_POST['isSecret'];
+$important = $_POST['important'];
 
-if ($isSecret == NULL) {
-    $isSecret = 0;
+if($important != NULL){
+    $important = 1;
 }
+else $important = 0;
+
 
 
 $fileDestination = '';
@@ -59,9 +61,9 @@ if ($fileName == "")
 if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
     // 파일 업로드 성공한 경우
     $sql = "
-        INSERT INTO board
-        (title, board, username, views, likes, created, visible, freeboard, notification, QandA, isSecret, filepath, filename)
-        VALUES ('$title', '$board', '$userId', '$view', '$like', NOW(), 1, 0, 0, 1, '$isSecret', '$fileDestination', '$fileName')
+        INSERT INTO n_board
+        (title, board, userid, views, likes, created, filepath, filename, important)
+        VALUES ('$title', '$board', '$userId', '$view', '$like', NOW(), '$fileDestination', '$fileName', '$important')
     ";
 
     $result = mysqli_query($conn, $sql);
