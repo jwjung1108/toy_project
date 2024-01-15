@@ -34,7 +34,7 @@ switch ($sort) {
 // SQL 쿼리문 수정
 $sql = "SELECT r_board.*, users.user_rank
         FROM r_board
-        JOIN users ON reference.userid = users.id
+        JOIN users ON r_board.userid = users.id
         $orderBy";
 
 $result = mysqli_query($conn, $sql);
