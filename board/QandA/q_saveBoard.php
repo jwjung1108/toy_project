@@ -20,6 +20,7 @@ $like = 0;
 $title = $_POST['title'];
 $board = $_POST['board'];
 $isSecret = $_POST['isSecret']; //비밀글 표시 여부 확인 기능
+$nickname = $_SESSION['UserName'];
 
 if ($isSecret == NULL) {
     $isSecret = 0;
@@ -60,8 +61,8 @@ if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
     // 파일 업로드 성공한 경우
     $sql = "
         INSERT INTO q_board
-        (title, board, userid, views, likes, created, isSecret, filepath, filename)
-        VALUES ('$title', '$board', '$userid', '$view', '$like', NOW(), '$isSecret', '$fileDestination', '$fileName')
+        (title, board, userid, nickname views, likes, created, isSecret, filepath, filename)
+        VALUES ('$title', '$board', '$nickname', '$userid', '$view', '$like', NOW(), '$isSecret', '$fileDestination', '$fileName')
     ";
 
     $result = mysqli_query($conn, $sql);
