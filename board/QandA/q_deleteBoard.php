@@ -35,7 +35,7 @@ $userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
         exit();
     }
 
-    $check_user = "SELECT userid FROM q_board WHERE userid = '$userId' AND number = '$number'";
+    $check_user = "SELECT userid FROM q_board WHERE userid = '$userid' AND number = '$number'";
     $result = mysqli_fetch_array(mysqli_query($conn, $check_user));
 
     if ($userid != $result['userid']) {
@@ -61,7 +61,7 @@ $userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
         ?>
         <?php
     } else {
-        $sql = "UPDATE board SET visible = 0 WHERE number = '$number'";
+        $sql = "delete from q_board WHERE number = '$number'";
         mysqli_query($conn, $sql);
         ?>
         <script>
