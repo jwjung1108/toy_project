@@ -12,7 +12,7 @@ if ($_SESSION['UserID'] == NULL) {
     <?php
     exit();
 }
-
+$userid = $_SESSION['UserID'];  // 별다른 확인 과정 없이 변수 대입 추후 취약점 발생 가능
 
 $view = 0;
 $like = 0;
