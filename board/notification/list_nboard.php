@@ -12,7 +12,7 @@ $tierIcons = [
 ];
 
 
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+$UserID = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
 
 // 정렬 방식 설정
 $sort = isset($_GET['sort']) ? $_GET['sort'] : 'number'; // 기본값은 순번
@@ -29,11 +29,10 @@ switch ($sort) {
         break;
 }
 
-$sql = "SELECT board.*, users.user_rank
-        FROM board
-        JOIN users ON board.username = users.id
-        WHERE board.visible = 1 AND board.notification = 1 AND board.QandA = 0
-        ORDER BY board.important DESC, board.$orderBy DESC";
+$sql = "SELECT n_board.*, users.user_rank
+        FROM n_board
+        JOIN users ON n_board.userid = users.id
+        ORDER BY n_board.important DESC, n_board.$orderBy DESC";
 
 $result = mysqli_query($conn, $sql);
 
@@ -88,6 +87,7 @@ $result = mysqli_query($conn, $sql);
         }
 
         .generic {}
+
         .tier-icon {
             width: 20px;
             /* 이미지의 크기 조절 */
@@ -258,13 +258,9 @@ $result = mysqli_query($conn, $sql);
         </div>
         <div class="text-center">
             <?php
-            if ($userId != NULL) {
-                $sql = "select authority from users where id='$userId'";
-                $row = mysqli_fetch_array(mysqli_query($conn, $sql));
-                if ($row['authority'] == 2) {
-                    ?><a href="n_writeForm.php" class="btn btn-primary">작성</a>
-                    <?php
-                }
+            if ($_SESSION['authority'] == 'admin') {
+                ?><a href="n_writeForm.php" class="btn btn-primary">작성</a>
+                <?php
             }
             ?>
 
