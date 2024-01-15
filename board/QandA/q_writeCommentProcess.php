@@ -22,7 +22,7 @@ $number = $_GET['number'];
 $sql = "
     insert into q_comment
     (userid, nickname, boardnumber, comment, created)
-    values('$userid', '$nickname', '$number','{$_POST['text']}', NOW())";
+    values('$userid', '$nickname', '$number','{$_POST['comment']}', NOW())";
 
 $result = mysqli_query($conn, $sql);
 
