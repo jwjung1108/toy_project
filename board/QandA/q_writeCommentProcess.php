@@ -19,8 +19,8 @@ if ($row['authority'] != 2) {
 $number = $_GET['number'];
 $sql = "
     insert into q_comment
-    (userid, boardnumber, comment, created)
-    values('$userid','$number','{$_POST['text']}', NOW()
+    (userid, boardnumber, comment, created, nickname)
+    values('$userid','$number','{$_POST['text']}', NOW(), '{$row['nickname']}'
     )";
 
 $result = mysqli_query($conn, $sql);

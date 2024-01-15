@@ -313,18 +313,10 @@ session_start();
                                 <?php echo $i++; ?>
                             </th>
                             <td>
-                                <a>
-                                    <?php
-                                    if ($row['visible'] == 1) {
-                                        echo $row['text'];
-                                    }
-                                    ?>
-                                </a>
-
-                                <!-- <a><?php echo $row['text']; ?></a> -->
+                                <?php echo $row['comment']; ?>
                             </td>
                             <td>
-                                <?php echo $row['userid']; ?>
+                                <?php echo $row['nickname']; ?>
                             </td>
                             <td>
                                 <?php echo $row['created']; ?>
