@@ -5,11 +5,9 @@ include '../../connect.php';
 <?php
 //사용자 권한 확인
 session_start();
-$userId = $_SESSION['userId'];
+$userid = $_SESSION['UserID'];
 
-$sql = "select authority from users where id='$userId'";
-$row = mysqli_fetch_array(mysqli_query($conn, $sql));
-if($row['authority'] != 2){
+if($_SESSION['authority'] != 'admin'){
     ?>
     <script>
         alert("지정된 사용자가 아닙니다.");
@@ -29,7 +27,7 @@ if($row['authority'] != 2){
 <body>
     <?php
     $number = $_GET['number'];
-    $sql = "update board set visible = 0 where number = '$number'";
+    $sql = "delete from n_board where number = '$number'";
 
     $result = mysqli_query($conn, $sql);
     if ($result === false) {

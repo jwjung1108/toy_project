@@ -131,7 +131,7 @@ session_start();
     $number = $_GET['number']; /* bno함수에 title값을 받아와 넣음*/
     $board = mysqli_fetch_array(mysqli_query($conn, "select * from n_board where number ='" . $number . "'"));
 
-    $check_table = (mysqli_query($conn, "select * from time where userid='" . $_SESSION['UserID'] . "' and boardNumber = '$number'"));
+    $check_table = (mysqli_query($conn, "select * from time where userid='" . $_SESSION['UserID'] . "' and boardnumber = '$number'"));
     $row = mysqli_fetch_array($check_table);
 
     $result = mysqli_num_rows($check_table) > 0;
