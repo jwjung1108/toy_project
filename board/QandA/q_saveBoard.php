@@ -61,7 +61,7 @@ if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
     // 파일 업로드 성공한 경우
     $sql = "
         INSERT INTO q_board
-        (title, board, userid, nickname views, likes, created, isSecret, filepath, filename)
+        (title, board, userid, nickname, views, likes, created, isSecret, filepath, filename)
         VALUES ('$title', '$board', '$nickname', '$userid', '$view', '$like', NOW(), '$isSecret', '$fileDestination', '$fileName')
     ";
 
