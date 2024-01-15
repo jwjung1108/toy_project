@@ -1,9 +1,9 @@
 <?php
 session_start();
-$userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
+
 include '../../connect.php';
 
-if ($userid == '') {
+if ($_SESSION['UserID'] == NULL) {
     ?>
     <script>
         alert("로그인 후 작성이 가능합니다.");
