@@ -5,11 +5,9 @@ include '../../connect.php';
 <?php
 //사용자 권한 확인
 session_start();
-$userId = $_SESSION['userId'];
+$userid = $_SESSION['UserID'];
 
-$sql = "select authority from users where id='$userId'";
-$row = mysqli_fetch_array(mysqli_query($conn, $sql));
-if($row['authority'] != 2){
+if($_SESSION['authority'] != "admin"){
     ?>
     <script>
         alert("지정된 사용자가 아닙니다.");
@@ -25,9 +23,7 @@ if($row['authority'] != 2){
 </head>
 <body>
     <?php
-            $sql = "select authority from users where id='$userId'";
-            $row = mysqli_fetch_array(mysqli_query($conn, $sql));
-            if ($row['authority'] == 2) {
+            if ($_SESSION['authority'] == "admin") {
                 ?><a href="q_writeForm.php" class="btn btn-primary">작성</a>
                 <?php
             }
@@ -36,7 +32,7 @@ if($row['authority'] != 2){
 
     
         $number = $_GET['number'];
-        $row = mysqli_fetch_array(mysqli_query($conn,"select * from board where number= '$number'"));
+        $row = mysqli_fetch_array(mysqli_query($conn,"select * from q_board where number= '$number'"));
         $title = $row['title'];
         $board = $row['board'];
     ?>
