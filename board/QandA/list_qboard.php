@@ -2,7 +2,7 @@
 session_start();
 include '../../connect.php';
 
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+$userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
 
 $tierIcons = [
     'Bronze' => '/icon/bronze.png',
@@ -14,10 +14,9 @@ $tierIcons = [
 ];
 
 // SQL 쿼리문 수정
-$sql = "SELECT board.*, users.user_rank
-        FROM board
-        JOIN users ON board.username = users.id
-        WHERE board.visible = 1 AND board.notification = 0 AND board.QandA = 1";
+$sql = "SELECT q_board.*, users.user_rank
+        FROM q_board
+        JOIN users ON q_board.userid = users.id";
 
 $result = mysqli_query($conn, $sql);
 ?>
@@ -68,6 +67,7 @@ $result = mysqli_query($conn, $sql);
         .sortable {
             cursor: pointer;
         }
+
         .tier-icon {
             width: 20px;
             /* 이미지의 크기 조절 */
@@ -100,7 +100,7 @@ $result = mysqli_query($conn, $sql);
                         <a class="nav-link" href="/">홈</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/board/nomal/list_board.php">자유게시판</a>
+                        <a class="nav-link" href="/board/standard/list_board.php">자유게시판</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/board/notification/list_nboard.php">공지사항</a>
@@ -173,35 +173,40 @@ $result = mysqli_query($conn, $sql);
             </div>
             <tbody>
                 <?php
-                $sql_c = "select authority from users where id='$userId'";
-                $check_user = mysqli_fetch_array(mysqli_query($conn, $sql_c));
+
+                if ($_SESSION['authority'] != NULL) {
+                    $check_user = $_SESSION['authority'];
+                } else {
+                    $check_user = '';
+                }
+
                 $i = 1;
                 while ($row = mysqli_fetch_array($result)) {
                     // 비밀글인 경우, authority가 2인 사용자나 작성자만 볼 수 있도록 체크
                     $authorRank = $row['user_rank'];
-                        $tierIconPath = isset($tierIcons[$authorRank]) ? $tierIcons[$authorRank] : $tierIcons['Default'];
+                    $tierIconPath = isset($tierIcons[$authorRank]) ? $tierIcons[$authorRank] : $tierIcons['Default'];
 
-                        // Determine color based on rank
-                        switch ($authorRank) {
-                            case 'Bronze':
-                                $color = 'color: #cd7f32;'; // Bronze color (e.g., brown)
-                                break;
-                            case 'Silver':
-                                $color = 'color: #c0c0c0;'; // Silver color (e.g., silver)
-                                break;
-                            case 'Gold':
-                                $color = 'color: #ffd700;'; // Gold color (e.g., gold)
-                                break;
-                            case 'Platinum':
-                                $color = 'color: #ff4500;'; // Platinum color (e.g., orange)
-                                break;
-                            case 'Master':
-                                $color = 'color: #ff8c00;'; // Master color (e.g., orange)
-                                break;
-                            default:
-                                $color = 'color: black;'; // Default color (e.g., black)
-                                break;
-                        }
+                    // Determine color based on rank
+                    switch ($authorRank) {
+                        case 'Bronze':
+                            $color = 'color: #cd7f32;'; // Bronze color (e.g., brown)
+                            break;
+                        case 'Silver':
+                            $color = 'color: #c0c0c0;'; // Silver color (e.g., silver)
+                            break;
+                        case 'Gold':
+                            $color = 'color: #ffd700;'; // Gold color (e.g., gold)
+                            break;
+                        case 'Platinum':
+                            $color = 'color: #ff4500;'; // Platinum color (e.g., orange)
+                            break;
+                        case 'Master':
+                            $color = 'color: #ff8c00;'; // Master color (e.g., orange)
+                            break;
+                        default:
+                            $color = 'color: black;'; // Default color (e.g., black)
+                            break;
+                    }
 
                     ?>
                     <tr>
@@ -210,7 +215,7 @@ $result = mysqli_query($conn, $sql);
                         </th>
                         <?php
                         if ($row['isSecret'] == 1) {
-                            if ($row['username'] != $userId && $check_user['authority'] != 2) {
+                            if ($row['userid'] != $userid && $check_user != 'admin') {
                                 ?>
                                 <td>
                                     <?php echo "비밀글입니다."; ?>
@@ -231,9 +236,9 @@ $result = mysqli_query($conn, $sql);
                             </td>
                         <?php } ?>
                         <td class="title-cell" style="<?php echo $color; ?>">
-                                <img src="<?php echo $tierIconPath; ?>" alt="tier" class="tier-icon" />
-                                <?php echo $row['username']; ?>
-                            </td>
+                            <img src="<?php echo $tierIconPath; ?>" alt="tier" class="tier-icon" />
+                            <?php echo $row['username']; ?>
+                        </td>
                         <td class="title-cell">
                             <?php echo $row['created']; ?>
                         </td>

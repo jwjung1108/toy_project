@@ -120,7 +120,7 @@ $result = mysqli_query($conn, $sql);
                         <a class="nav-link" href="/">홈</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/board/nomal/list_board.php">자유게시판</a>
+                        <a class="nav-link" href="/board/standard/list_board.php">자유게시판</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/board/notification/list_nboard.php">공지사항</a>
