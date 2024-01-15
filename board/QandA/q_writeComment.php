@@ -1,9 +1,9 @@
 <?php
 session_start();
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+$userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
 include '../../connect.php';
 
-if ($userId == '') {
+if ($userid == '') {
   ?>
   <script>
     alert("로그인을 해주세요.");
@@ -13,10 +13,10 @@ if ($userId == '') {
   exit();
 }
 
-$sql = "select * from users where id = '$userId'";
+$sql = "select * from users where id = '$userid'";
 $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 
-if ($row['authority'] != 2) {
+if ($_SESSION['authority'] != "admin") {
   ?>
   <script>
     alert("권한이 없습니다.");
