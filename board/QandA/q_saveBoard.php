@@ -19,7 +19,7 @@ $like = 0;
 
 $title = $_POST['title'];
 $board = $_POST['board'];
-$isSecret = $_POST['isSecret'];
+$isSecret = $_POST['isSecret']; //비밀글 표시 여부 확인 기능
 
 if ($isSecret == NULL) {
     $isSecret = 0;
