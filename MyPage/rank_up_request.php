@@ -2,10 +2,10 @@
 include '../connect.php';
 session_start();
 
-$userId = $_SESSION['userId'];
+$userid = $_SESSION['UserID'];
 
 // 데이터베이스에서 사용자 정보 조회
-$sql = "SELECT * FROM users WHERE id = '$userId'";
+$sql = "SELECT * FROM users WHERE id = '$userid'";
 $result = mysqli_query($conn, $sql);
 $user = mysqli_fetch_array($result);
 
@@ -28,7 +28,7 @@ switch ($user['user_rank']) {
 
 // 등급 업 로직
 if ($newRank !== $user['user_rank']) {
-    mysqli_query($conn, "UPDATE users SET user_rank = '$newRank' WHERE id = '$userId'");
+    mysqli_query($conn, "UPDATE users SET user_rank = '$newRank' WHERE id = '$userid'");
     echo "<script>alert('등급이 업그레이드 되었습니다.'); window.location.href = 'mypage.php';</script>";
 } else {
     echo "<script>alert('등급 업그레이드 조건을 충족하지 못했습니다.'); window.history.back();</script>";

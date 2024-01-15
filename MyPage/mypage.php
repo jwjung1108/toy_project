@@ -2,8 +2,9 @@
 include '../connect.php';
 session_start();
 // 로그인 검증
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
-if ($userId == '') {
+$userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
+
+if ($userid == '') {
     ?>
     <script>
         alert("로그인을 해주세요");
@@ -12,6 +13,10 @@ if ($userId == '') {
     <?php
     exit();
 }
+
+
+$nickname = $_SESSION['UserName'];
+
 ?>
 
 <!DOCTYPE html>
@@ -34,11 +39,11 @@ if ($userId == '') {
         <div>
             <h1 class="page-title">마이페이지에 오신 것을 환영합니다.</h1>
             <h2 class="welcome-message">어서오세요
-                <?php echo $userId; ?>님
+                <?php echo $nickname; ?>님
             </h2>
 
             <?php
-            $sql = "select * from users where id = '$userId'";
+            $sql = "select * from users where id = '$userid'";
             $result = mysqli_fetch_array(mysqli_query($conn, $sql));
 
             echo "<div class='user-info'>";
