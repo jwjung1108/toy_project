@@ -19,7 +19,7 @@ if ($row['authority'] != 2) {
 $number = $_GET['number'];
 $sql = "
     insert into q_comment
-    (userID, boardNumber, text, created)
+    (userid, boardNumber, text, created)
     values('$userid','$number','{$_POST['text']}', NOW()
     )";
 
