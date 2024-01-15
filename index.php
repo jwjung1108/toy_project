@@ -61,9 +61,9 @@ session_start();
 
             <a class="navbar-brand" href="#">학습 커뮤니티</a>
             <div class="d-flex align-items-center">
-                <?php if (isset($_SESSION['userId'])) { ?>
+                <?php if (isset($_SESSION['userID'])) { ?>
                 <span class="navbar-text mr-3">
-                    <?php echo $_SESSION['userId']; ?> 님 환영합니다
+                    <?php echo $_SESSION['UserName']; ?> 님 환영합니다
                 </span>
                 <button class="btn btn-outline-light" onclick="logout()">로그아웃</button>
                 <button class="btn btn-outline-light" onclick="goToMyPage()">마이페이지</button>
@@ -134,7 +134,7 @@ session_start();
                     <div class="card-body card-body-custom">
                         <h5 class="card-title">Q&A</h5>
                         <p class="card-text">묻고 답하라.</p>
-                        <button onclick="goToQandABoardPage()">QandA</button>
+                        <button onclick="goToQandABoardPage()">Q&A</button>
                     </div>
                 </div>
             </div>
