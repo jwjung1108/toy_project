@@ -20,7 +20,7 @@ $like = 0;
 $title = $_POST['title'];
 $board = $_POST['board'];
 $important = $_POST['important'];
-$nickname = $_SESSON['UserName'];
+$nickname = $_SESSION['UserName'];
 
 if($important != NULL){
     $important = 1;
