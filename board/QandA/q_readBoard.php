@@ -320,7 +320,7 @@ session_start();
                                 <?php echo $row['created']; ?>
                             </td>
                             <td>
-                                <a href="q_deleteComment.php?Number=<?php echo $row['Number'] ?>">
+                                <a href="q_deleteComment.php?Number=<?php echo $row['number'] ?>">
                                     <?php echo "삭제"; ?>
                                 </a>
                             </td>
