@@ -50,7 +50,7 @@ $userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
         }
 
 
-        $sql = "UPDATE board SET visible = 0 WHERE number = '$number'";
+        $sql = "delete from q_board WHERE number = '$number'";
         mysqli_query($conn, $sql);
         ?>
         <script>

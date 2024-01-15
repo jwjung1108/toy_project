@@ -217,9 +217,9 @@ include '../point/ReadPoint.php';
 <body>
     <?php
     $number = $_GET['number']; /* bno함수에 title값을 받아와 넣음*/
-    $board = mysqli_fetch_array(mysqli_query($conn, "select * from board where number ='" . $number . "'"));
+    $board = mysqli_fetch_array(mysqli_query($conn, "select * from q_board where number ='" . $number . "'"));
 
-    $check_table = (mysqli_query($conn, "select * from time where userID='" . $_SESSION['userId'] . "' and boardNumber = '$number'"));
+    $check_table = (mysqli_query($conn, "select * from q_time where userid='" . $_SESSION['UserID'] . "' and boardnumber = '$number'"));
     $row = mysqli_fetch_array($check_table);
 
     $result = mysqli_num_rows($check_table) > 0;
@@ -228,7 +228,7 @@ include '../point/ReadPoint.php';
     $current_time = time();
 
     // time table access 시간
-    $db_access = mysqli_fetch_array(mysqli_query($conn, "select access from time where boardNumber=$number and userID='{$_SESSION['userId']}'"));
+    $db_access = mysqli_fetch_array(mysqli_query($conn, "select access from q_time where boardnumber=$number and userid='{$_SESSION['UserID']}'"));
 
     $fomater = "Y-m-d H:i:s";
     $view = $board['views'];
@@ -236,16 +236,16 @@ include '../point/ReadPoint.php';
     if ($result) {
         if ($current_time - strtotime($db_access['access']) > 3600) {
             $view = $view + 1;
-            if (mysqli_query($conn, "update board set views = '" . $view . "' where number = '" . $number . "'")) {
+            if (mysqli_query($conn, "update q_board set views = '" . $view . "' where number = '" . $number . "'")) {
                 $current_time = date($fomater, $current_time);
-                mysqli_query($conn, "update time set access = '$current_time' where boardNumber = $number and userID = '{$_SESSION['userId']}'");
+                mysqli_query($conn, "update q_time set access = '$current_time' where boardnumber = $number and userid = '{$_SESSION['UserID']}'");
             }
         }
     } else {
         $view = $view + 1;
         $current_time = date($fomater, $current_time);
-        mysqli_query($conn, "insert into time(userID,boardNumber, access) values('{$_SESSION['userId']}', $number, '$current_time')");
-        mysqli_query($conn, "update board set views = '" . $view . "' where number = '" . $number . "'");
+        mysqli_query($conn, "insert into q_time(userid,boardnumber, access) values('{$_SESSION['UserID']}', $number, '$current_time')");
+        mysqli_query($conn, "update q_board set views = '" . $view . "' where number = '" . $number . "'");
     }
     ?>
     <!-- 글 불러오기 -->
@@ -284,7 +284,7 @@ include '../point/ReadPoint.php';
 
         <!-- 답변 -->
         <?php
-        $sql = "select * from q_comment where boardNumber = '$number'";
+        $sql = "select * from q_comment where boardnumber = '$number'";
         $result = mysqli_query($conn, $sql);
         ?>
         <div class="container">
@@ -323,7 +323,7 @@ include '../point/ReadPoint.php';
                                 <!-- <a><?php echo $row['text']; ?></a> -->
                             </td>
                             <td>
-                                <?php echo $row['userID']; ?>
+                                <?php echo $row['userid']; ?>
                             </td>
                             <td>
                                 <?php echo $row['created']; ?>
@@ -342,11 +342,11 @@ include '../point/ReadPoint.php';
                 <!-- 댓글 작성 버튼 -->
                 <?php
                 session_start();
-                $userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+                $userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
                 if ($userId != NULL) {
-                    $sql = "select authority from users where id='$userId'";
+                    $sql = "select authority from users where id='$userid'";
                     $row = mysqli_fetch_array(mysqli_query($conn, $sql));
-                    if ($row['authority'] == 2) {
+                    if ($_SESSION['authority'] == "admin") {
                         ?>
                         <button class="btn-primary" onclick="openCommentModal()">댓글 작성</button>
                         <?php
@@ -360,7 +360,7 @@ include '../point/ReadPoint.php';
                 <div id="commentModal">
                     <form action='q_writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
                         <textarea name="text"></textarea>
-                        <input type="hidden" name="boardNumber" value="<?php echo $number; ?>">
+                        <input type="hidden" name="boardnumber" value="<?php echo $number; ?>">
                         <input type="submit" value="작성">
                     </form>
                 </div>
