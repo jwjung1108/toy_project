@@ -131,7 +131,7 @@ session_start();
     $number = $_GET['number']; /* bno함수에 title값을 받아와 넣음*/
     $board = mysqli_fetch_array(mysqli_query($conn, "select * from n_board where number ='" . $number . "'"));
 
-    $check_table = (mysqli_query($conn, "select * from time where userid='" . $_SESSION['UserID'] . "' and boardnumber = '$number'"));
+    $check_table = (mysqli_query($conn, "select * from n_time where userid='" . $_SESSION['UserID'] . "' and boardnumber = '$number'"));
     $row = mysqli_fetch_array($check_table);
 
     $result = mysqli_num_rows($check_table) > 0;
@@ -150,7 +150,7 @@ session_start();
             $view = $view + 1;
             if (mysqli_query($conn, "update n_board set views = '" . $view . "' where number = '" . $number . "'")) {
                 $current_time = date($fomater, $current_time);
-                mysqli_query($conn, "update time set access = '$current_time' where boardnumber = $number and userid = '{$_SESSION['UserID']}'");
+                mysqli_query($conn, "update n_time set access = '$current_time' where boardnumber = $number and userid = '{$_SESSION['UserID']}'");
             }
         }
     } else {
