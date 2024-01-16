@@ -6,7 +6,7 @@ $userid = $_SESSION['UserID'];
 
 $number = $_GET['number'];
 
-$sql = "select userid from r_comment where boardnumber = '$number'";
+$sql = "select userid from r_comment where number = '$number'";
 $result = mysqli_fetch_array(mysqli_query($conn, $sql));
 
 if ($result['userid'] != $userid) {
@@ -14,7 +14,7 @@ if ($result['userid'] != $userid) {
         ?>
         <script>
             alert("접근 권한이 없습니다.");
-            location.href = "./list_rboard.php";
+            history.go(-1);
         </script>
         <?php
         exit();
