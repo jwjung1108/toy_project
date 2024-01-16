@@ -13,7 +13,7 @@ if ($result === false) {
 ?>
     <script>
         alert("게시글이 수정되었습니다.");
-        location.href = "list_reference.php";
+        location.href = "list_rboard.php";
     </script>
 <?php
 }
