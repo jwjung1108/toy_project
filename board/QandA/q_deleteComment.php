@@ -44,9 +44,7 @@ $userid = $_SESSION['UserID'];
     ?>
     <script>
         alert("댓글이 삭제되었습니다.");
-        location.href = "list_qboard.php";
+        location.href = "./list_qboard.php";
     </script>
-
 </body>
-
 </html>
