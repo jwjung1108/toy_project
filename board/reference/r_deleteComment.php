@@ -4,7 +4,12 @@ include '../../connect.php';
 session_start();
 $userid = $_SESSION['UserID'];
 
-if ($_SESSION['authority'] != "admin") {
+$number = $_GET['number'];
+
+$sql ="select userid from r_comment where boardnumber = '$number'";
+$result = mysqli_fetch_array(mysqli_query($conn, $sql));
+
+if ($result['userid'] != $userid) {
     ?>
     <script>
         alert("접근 권한이 없습니다.");
@@ -13,8 +18,6 @@ if ($_SESSION['authority'] != "admin") {
     <?php
     exit();
 }
-
-$number = $_GET['number'];
 
 $sql = "DELETE FROM r_comment WHERE number = '$number'";
 $result = mysqli_query($conn, $sql);
