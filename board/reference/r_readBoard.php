@@ -404,7 +404,7 @@ include '../point/ReadPoint.php';
                 <div id="modalBackground"></div>
                 <div id="commentModal">
                     <form action='r_writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
-                        <textarea name="text"></textarea>
+                        <textarea name="comment"></textarea>
                         <input type="hidden" name="boardnumber" value="<?php echo $number; ?>">
                         <input type="submit" value="작성">
                     </form>
