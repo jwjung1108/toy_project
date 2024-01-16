@@ -375,7 +375,7 @@ include '../point/ReadPoint.php';
                             </th>
                             <td>
                                 <a>
-                                <?php echo $row['text']; ?>
+                                <?php echo $row['comment']; ?>
                                 </a>
                             </td>
                             <td>
