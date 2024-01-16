@@ -5,9 +5,9 @@ session_start();
 
 <?php
 // 사용자 권한 확인
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+$userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
 
-$sql = "SELECT authority FROM users WHERE id='$userId'";
+$sql = "SELECT authority FROM users WHERE id='$userid'";
 $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 
 ?>
@@ -21,36 +21,36 @@ $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 <body>
     <?php
     $number = $_GET['number'];
-    $check_user = "SELECT username FROM reference WHERE username = '$userId' AND number = '$number'";
+    $check_user = "SELECT userid FROM r_board WHERE userid = '$userid' AND number = '$number'";
     $result = mysqli_fetch_array(mysqli_query($conn, $check_user));
 
-    if ($userId != $result['username']) {
+    if ($userid != $result['userid']) {
         if ($row['authority'] != 2) {
             ?>
             <script>
                 alert("'접근 권한이 없습니다.';");
-                location.href = "list_reference.php";
+                location.href = "list_rboard.php";
             </script>
             <?php
             exit();
         }
-        $sql = "UPDATE reference SET visible = 0 WHERE number = '$number'";
+        $sql = "DELETE from r_board WHERE number = '$number'";
         mysqli_query($conn, $sql);
         ?>
         <script>
             alert("게시글이 삭제되었습니다.");
-            location.href = "list_reference.php";
+            location.href = "list_rboard.php";
         </script>
         <?php
         ?>
         <?php
     } else {
-        $sql = "UPDATE reference SET visible = 0 WHERE number = '$number'";
+        $sql = "DELETE FROM r_board WHERE number = '$number'";
         mysqli_query($conn, $sql);
         ?>
         <script>
             alert("게시글이 삭제되었습니다.");
-            location.href = "list_reference.php";
+            location.href = "list_rboard.php";
         </script>
         <?php
     }

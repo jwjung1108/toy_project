@@ -1,9 +1,9 @@
 <?php
 session_start();
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+$userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
 include '../../connect.php';
 
-$sql = "update reference set title ='{$_POST['title']}', board='{$_POST['board']}' where number = '{$_GET['number']}'";
+$sql = "update r_board set title ='{$_POST['title']}', board='{$_POST['board']}' where number = '{$_GET['number']}'";
 
 $result = mysqli_query($conn, $sql);
 

@@ -375,23 +375,17 @@ include '../point/ReadPoint.php';
                             </th>
                             <td>
                                 <a>
-                                    <?php
-                                    if ($row['visible'] == 1) {
-                                        echo $row['text'];
-                                    } else {
-                                        echo "삭제된 댓글입니다.";
-                                    }
-                                    ?>
+                                <?php echo $row['text']; ?>
                                 </a>
                             </td>
                             <td>
-                                <?php echo $row['userID']; ?>
+                                <?php echo $row['nickname']; ?>
                             </td>
                             <td>
                                 <?php echo $row['created']; ?>
                             </td>
                             <td>
-                                <a href="r_deleteComment.php?Number=<?php echo $row['number'] ?>">
+                                <a href="r_deleteComment.php?number=<?php echo $row['number'] ?>">
                                     <?php echo "삭제"; ?>
                                 </a>
                             </td>

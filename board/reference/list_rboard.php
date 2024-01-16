@@ -164,6 +164,8 @@ $result = mysqli_query($conn, $sql);
             <a href="?sort=number" class="btn btn-primary <?php echo ($sort == 'number') ? 'active' : ''; ?>">순번</a>
         </div>
 
+
+        <!-- 검색 모듈 -->
         <div id="search_box">
             <form action="../search_result.php" method="get">
                 <select name="catgo">

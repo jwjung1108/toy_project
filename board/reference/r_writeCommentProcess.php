@@ -1,13 +1,15 @@
 <?php
 include '../../connect.php';
 include '../point/WriteCoPoint.php';
+session_start();
+
+$nickname = $_SESSION['UserName'];
 
 $number = $_GET['number'];
 $sql = "
     insert into r_comment
-    (userID, boardNumber, text, created, visible)
-    values('$userId','$number','{$_POST['text']}', NOW(), 1
-    )";
+    (userid, nickname, boardnumber, comment, created)
+    values('$userid', '$nickname', '$number','{$_POST['comment']}', NOW())";
 
 $result = mysqli_query($conn, $sql);
 
