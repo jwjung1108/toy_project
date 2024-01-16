@@ -1,51 +1,37 @@
 <?php
 include '../../connect.php';
-$number = $_GET['number'];
-// $sql = "select userid from q_comment where number= '$number'";
-// $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 
-?>
-
-<?php
-//사용자 권한 확인
 session_start();
 $userid = $_SESSION['UserID'];
 
-// $check_user = "select authority from users where id='$userid'";
-// $rows = mysqli_fetch_array(mysqli_query($conn, $check_user));
-
-?>
-
-
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-</head>
-
-<body>
+if ($_SESSION['authority'] != "admin") {
+    ?>
+    <script>
+        alert("접근 권한이 없습니다.");
+        location.href = "./list_qboard.php";
+    </script>
     <?php
+    exit();
+}
 
-    if ($_SESSION['authority'] != "admin") {
-        ?>
-        <script>
-            alert("접근 권한이 없습니다.");
-            location.href = "./list_qboard.php";
-        </script>
-        <?php
-        exit();
-    } else {
-        $sql = "delete from q_comment where number = '$number'";
-        $row = mysqli_fetch_array(mysqli_query($conn, $sql));
-        ?>
-        <script>
-            alert("댓글이 삭제되었습니다.");
-            history.go(-1);
-        </script>
-        <?php
-    } ?>
+$number = $_GET['number'];
 
+$sql = "DELETE FROM q_comment WHERE number = '$number'";
+$result = mysqli_query($conn, $sql);
 
-</body>
-
-</html>
+if ($result) {
+    ?>
+    <script>
+        alert("댓글이 삭제되었습니다.");
+        history.go(-1);
+    </script>
+    <?php
+} else {
+    ?>
+    <script>
+        alert("댓글 삭제에 실패하였습니다.");
+        history.go(-1);
+    </script>
+    <?php
+}
+?>
