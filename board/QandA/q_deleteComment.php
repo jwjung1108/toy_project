@@ -34,15 +34,18 @@ $userid = $_SESSION['UserID'];
         </script>
         <?php
         exit();
-    }
-    else{
+    } else {
         $sql = "delete from q_comment where number = '$number'";
         $row = mysqli_fetch_array(mysqli_query($conn, $sql));
+        ?>
+        <script>
+            alert("댓글이 삭제되었습니다.");
+            history.go(-1);
+        </script>
+        <?php
     } ?>
-    <script>
-        alert("댓글이 삭제되었습니다.");
-        location.href = "./list_qboard.php";
-    </script>
+
 
 </body>
+
 </html>
