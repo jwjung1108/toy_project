@@ -25,25 +25,24 @@ $row = mysqli_fetch_array(mysqli_query($conn, $sql));
     $result = mysqli_fetch_array(mysqli_query($conn, $check_user));
 
     if ($userid != $result['userid']) {
-        if ($row['authority'] != 2) {
+        if ($row['authority'] == 2) {
+
+            $sql = "DELETE from r_board WHERE number = '$number'";
+            mysqli_query($conn, $sql);
             ?>
+
             <script>
-                alert("'접근 권한이 없습니다.';");
+                alert("게시글이 삭제되었습니다.");
                 location.href = "list_rboard.php";
             </script>
-            <?php
-            exit();
-        }
-        $sql = "DELETE from r_board WHERE number = '$number'";
-        mysqli_query($conn, $sql);
-        ?>
+        <?php } ?>
         <script>
-            alert("게시글이 삭제되었습니다.");
+            alert("'접근 권한이 없습니다.';");
             location.href = "list_rboard.php";
         </script>
         <?php
-        ?>
-        <?php
+        exit();
+        
     } else {
         $sql = "DELETE FROM r_board WHERE number = '$number'";
         mysqli_query($conn, $sql);
