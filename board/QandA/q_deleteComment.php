@@ -1,8 +1,8 @@
 <?php
 include '../../connect.php';
 $number = $_GET['number'];
-$sql = "select userid from q_comment where number= '$number'";
-$row = mysqli_fetch_array(mysqli_query($conn, $sql));
+// $sql = "select userid from q_comment where number= '$number'";
+// $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 
 ?>
 
