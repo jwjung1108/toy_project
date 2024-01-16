@@ -4,7 +4,7 @@ include '../../connect.php';
 session_start();
 
 $userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
-if ($userId == '') {
+if ($userid == '') {
     ?>
     <script>
         alert("로그인을 해주세요");
