@@ -46,7 +46,7 @@ if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
     // 파일 업로드 성공한 경우
     $sql = "
         INSERT INTO r_board;
-        (title, board, userid, nickname, views, likes, created, visible, filepath, filename)
+        (title, board, userid, nickname, views, likes, created, filepath, filename)
         VALUES ('$title', '$board', '$userid', '$nickname', '$view', '$like', NOW(), '$fileDestination', '$fileName')
     ";
 
