@@ -19,7 +19,7 @@ $isLiked = mysqli_num_rows($check_user) > 0;
 
 if (!$isLiked) {
     // 게시글에 대한 추천 기록 삽입
-    $sql = "insert into post_likes(post_id, userid,created) values('$post_id','$userid',NOW())";
+    $sql = "insert into r_post_likes(post_id, userid,created) values('$post_id','$userid',NOW())";
     mysqli_query($conn, $sql);
 
     // 게시글 추천 수 업데이트
