@@ -31,10 +31,9 @@ switch ($sort) {
         break;
 }
 
-$sql = "SELECT board.*, users.user_rank 
-        FROM board 
-        LEFT JOIN users ON board.username = users.id  
-        WHERE board.visible = 1 AND board.notification = 0 AND board.QandA = 0 $orderBy";
+$sql = "SELECT s_board.*, users.user_rank 
+        FROM s_board 
+        LEFT JOIN users ON s_board.userid = users.id $orderBy";
 
 
 
@@ -239,7 +238,7 @@ $result = mysqli_query($conn, $sql);
                             </td>
                             <td class="title-cell" style="<?php echo $color; ?>">
                                 <img src="<?php echo $tierIconPath; ?>" alt="tier" class="tier-icon" />
-                                <?php echo $row['username']; ?>
+                                <?php echo $row['nickname']; ?>
                             </td>
 
                             <td class="title-cell">
