@@ -3,10 +3,11 @@ include '../../connect.php';
 include '../point/WriteCoPoint.php';
 
 $number = $_GET['number'];
+$nickname = $_SESSION['UserName'];
 $sql = "
     insert into s_comment
-    (userid, boardnumber, comment, created)
-    values('$userid','$number','{$_POST['comment']}', NOW()
+    (userid,nickname, boardnumber, comment, created)
+    values('$userid','$nickname', '$number','{$_POST['comment']}', NOW()
     )";
 
 $result = mysqli_query($conn, $sql);
