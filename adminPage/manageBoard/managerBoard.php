@@ -182,7 +182,7 @@
                         <th scope="col">등록일</th>
                         <th scope="col">조회수</th>
                         <th scope="col">추천수</th>
-                        <th scope="col">등록</th>
+                        <th scope="col">게시판</th>
                         <th scope="col">삭제</th>
                     </tr>
                 </thead>
@@ -202,7 +202,7 @@
                                 <?php echo $row['board']; ?>
                             </td>
                             <td>
-                                <?php echo $row['username']; ?>
+                                <?php echo $row['userid']; ?>
                             </td>
                             <td>
                                 <?php echo $row['created']; ?>
@@ -214,7 +214,7 @@
                                 <?php echo $row['likes']; ?>
                             </td>
                             <td>
-                                <?php echo $row['visible']; ?>
+                                <?php echo $row['filename']; ?>
                             </td>
                             <td><a href="delete.php?number=<?php echo $row['number']; ?>">
                                     <?php echo 'X'; ?>
