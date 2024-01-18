@@ -1,6 +1,6 @@
 <?php
 session_start();
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+$userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
 include '../../connect.php';
 
 
@@ -9,6 +9,8 @@ $like = 0;
 
 $title = isset($_POST['title']) ? $_POST['title'] : '';
 $board = isset($_POST['board']) ? $_POST['board'] : '';
+$nickname = $_SESSION['UserName'];
+
 
 if ($title === '' || $board === '') { ?>
     <script>
@@ -51,9 +53,9 @@ $fileDestination = "";
 if (!move_uploaded_file($fileTmpName, $uploadDir . $fileSaveName)) {
     // 파일 업로드 성공한 경우
     $sql = "
-        INSERT INTO board
-        (title, board, username, views, likes, created, visible, freeboard, notification, QandA, isSecret, filepath, filename)
-        VALUES ('$title', '$board', '$userId', '$view', '$like', NOW(), 1,1,0,0,0, '$fileDestination', '$fileName')
+        INSERT INTO s_board
+        (title, board, userid, nickname views, likes, created, filepath, filename)
+        VALUES ('$title', '$board', '$userid', '$nickname', '$view', '$like', NOW(), '$fileDestination', '$fileName')
     ";
 
     $result = mysqli_query($conn, $sql);
