@@ -195,7 +195,7 @@ session_start();
                 echo "다운로드 파일이 존재하지 않습니다.";
             } else {
                 echo $board['filename'] . " "; ?>
-                <a href="../download.php?number=<?php echo $board['number']; ?>">[다운로드]</a>
+                <a href="../n_download.php?number=<?php echo $board['number']; ?>">[다운로드]</a>
                 <?php
             }
             ?>
