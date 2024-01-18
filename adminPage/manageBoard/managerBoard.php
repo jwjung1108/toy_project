@@ -145,26 +145,32 @@
         <?php
         include '../../connect.php';
         include '../check_admin.php';
-
+        $check = 0; // default 체크 값
+        
         $board_type = $_GET['board_type'] ?? 'all';
         switch ($board_type) {
             case 'notification':
                 $sql = "SELECT * FROM n_board";
+                $check = 0;
                 break;
             case 'freeboard':
                 $sql = "SELECT * FROM s_board";
+                $check = 0;
                 break;
             case 'reference':
                 $sql = "SELECT * FROM r_board";
+                $check = 0;
                 break;
             case 'qanda':
                 $sql = "SELECT * FROM q_board";
+                $check = 0;
                 break;
             default:
                 $sql = 'select * from s_board 
                 union select number, title, board, userid, nickname, views, likes, created, filename, "자료실" from r_board
                 union select number, title, board, userid, nickname, views, likes, created, if(important >= 1, "중요 공지사항", "일반 공지사항")  , "공지사항" from n_board
                 union select number, title, board, userid, nickname, views, likes, created, if(isSecret >= 1, "비밀글", "일반글") , "질문" from q_board;';
+                $chekc = 1;
                 break;
         }
         $result = mysqli_query($conn, $sql);
@@ -216,9 +222,18 @@
                             <td>
                                 <?php echo $row['filename']; ?>
                             </td>
-                            <td><a href="delete.php?number=<?php echo $row['number'];?>&board=<?php echo $row['filename'];?>">
-                                    <?php echo 'X'; ?>
-                                </a>
+                            <td>
+                                <?php if ($check) { ?>
+                                    <a
+                                        href="delete.php?number=<?php echo $row['number']; ?>&board=<?php echo $row['filename']; ?>">
+                                        <?php echo 'X'; ?>
+                                    </a>
+                                <?php } else {
+                                    ?>
+                                    <a href="delete.php?number=<?php echo $row['number']; ?>">
+                                        <?php echo 'X'; ?>
+                                    </a>
+                                <?php } ?>
                             </td>
                         </tr>
                     <?php } ?>
