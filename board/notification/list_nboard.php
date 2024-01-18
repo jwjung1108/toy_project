@@ -168,18 +168,13 @@ $result = mysqli_query($conn, $sql);
         </div>
 
         <div id="search_box">
-            <form action="../search_result.php" method="get" onsubmit="return validateForm()">
+            <form action="n_search_result.php" method="get" onsubmit="return validateForm()">
                 <select name="catgo">
                     <option value="title">제목</option>
                     <option value="userid">글쓴이</option>
                     <option value="board">내용</option>
                 </select>
                 <input type="text" name="search" required="required" />
-
-                <label><input type="checkbox" name="category[]" value="freeboard"> 자유게시판</label>
-                <label><input type="checkbox" name="category[]" value="notification"> 공지사항</label>
-                <label><input type="checkbox" name="category[]" value="QandA"> QandA</label>
-
                 <button>검색</button>
             </form>
         </div>
