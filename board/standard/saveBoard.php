@@ -32,7 +32,7 @@ $fileType = $file['type'];
 
 
 // 파일 저장 경로 설정  
-$uploadDir = '/home/upload/list/';
+$uploadDir = '/home/upload/standard/';
 
 
 // 파일 확장자 추출

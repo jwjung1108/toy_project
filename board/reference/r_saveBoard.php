@@ -24,7 +24,7 @@ $fileType = $file['type'];
 
 
 // 파일 저장 경로 설정  
-$uploadDir = '/var/www/html/upload/list/';
+$uploadDir = '/home/upload/reference';
 
 
 // 파일 확장자 추출

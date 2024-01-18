@@ -324,7 +324,7 @@ include '../point/ReadPoint.php';
                 echo "다운로드 파일이 존재하지 않습니다.";
             } else {
                 echo $board['filename'] . " "; ?>
-                <a href="../download.php?number=<?php echo $board['number']; ?>">[다운로드]</a>
+                <a href="../s_download.php?number=<?php echo $board['number']; ?>">[다운로드]</a>
                 <?php
             }
             ?>

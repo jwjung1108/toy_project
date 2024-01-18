@@ -41,7 +41,7 @@ $fileType = $file['type'];
 
 
 // 파일 저장 경로 설정  
-$uploadDir = '/home/upload/QandA/';
+$uploadDir = '/home/upload/notification/';
 
 
 // 파일 확장자 추출
