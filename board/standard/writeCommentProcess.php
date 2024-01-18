@@ -5,8 +5,8 @@ include '../point/WriteCoPoint.php';
 $number = $_GET['number'];
 $sql = "
     insert into s_comment
-    (userid, boardnumber, text, created)
-    values('$userid','$number','{$_POST['text']}', NOW()
+    (userid, boardnumber, comment, created)
+    values('$userid','$number','{$_POST['comment']}', NOW()
     )";
 
 $result = mysqli_query($conn, $sql);
