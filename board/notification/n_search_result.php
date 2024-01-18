@@ -26,6 +26,8 @@ $category = isset($_GET['catgo']) ? $_GET['catgo'] : '';
 $sql = "SELECT * FROM n_board where $category LIKE '%$search%' $orderBy";
 $result = mysqli_query($conn, $sql);
 
+
+echo "$category";
 ?>
 
 <!doctype html>
@@ -213,7 +215,7 @@ $result = mysqli_query($conn, $sql);
                         $boardType = '';
                         $link = '';
                         $boardType = '공지사항';
-                        $link = "notification/n_readBoard.php?number=" . $row['number'];
+                        $link = "n_readBoard.php?number=".$row['number'];
                         ?>
                         <tr>
                             <td>
