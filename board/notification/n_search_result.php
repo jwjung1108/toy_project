@@ -210,14 +210,11 @@ $result = mysqli_query($conn, $sql);
                     <?php
                     $i = 1;
                     while ($row = mysqli_fetch_array($result)) {
-                        $boardType = '';
-                        $link = '';
-                        $boardType = '공지사항';
                         $link = "n_readBoard.php?number=".$row['number'];
                         ?>
                         <tr>
                             <td>
-                                <?php echo htmlspecialchars($boardType); ?>
+                                <?php echo $row['number']; ?>
                             </td>
                             <td><a href="<?php echo $link; ?>">
                                     <?php echo $row['title']; ?>
