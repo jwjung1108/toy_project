@@ -168,7 +168,7 @@ $result = mysqli_query($conn, $sql);
         </div>
 
         <div id="search_box">
-            <form action="n_search_result.php" method="get" onsubmit="return validateForm()">
+            <form action="n_search_result.php" method="get">
                 <select name="catgo">
                     <option value="title">제목</option>
                     <option value="userid">글쓴이</option>
