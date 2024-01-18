@@ -24,7 +24,7 @@ $row = mysqli_fetch_array(mysqli_query($conn, $sql));
     $check_user = "SELECT userid FROM s_board WHERE userid = '$userid' AND number = '$number'";
     $result = mysqli_fetch_array(mysqli_query($conn, $check_user));
 
-    if ($userId != $result['userid']) {
+    if ($userid != $result['userid']) {
         if ($row['authority'] != 2) {
             ?>
             <script>

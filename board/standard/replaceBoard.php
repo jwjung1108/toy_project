@@ -35,7 +35,7 @@ $check_authority = mysqli_fetch_array(mysqli_query($conn, "SELECT authority FROM
     $check_user = "SELECT userid FROM s_board WHERE userid = '$userid' AND number = '$number'";
     $result = mysqli_fetch_array(mysqli_query($conn, $check_user));
 
-    if ($userId != $result['userid']) {
+    if ($userid != $result['userid']) {
         if ($check_authority['authority'] != 2) {
             ?>
             <script>
