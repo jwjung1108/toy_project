@@ -136,10 +136,10 @@
         <h2>게시판 관리</h2>
         <form action="" method="get">
             <button type="submit" name="board_type" value="all">모든 게시판</button>
-            <button type="submit" name="board_type" value="notification">공지사항</button>
+            <!-- <button type="submit" name="board_type" value="notification">공지사항</button>
             <button type="submit" name="board_type" value="freeboard">자유게시판</button>
             <button type="submit" name="board_type" value="reference">자료실</button>
-            <button type="submit" name="board_type" value="qanda">Q&A</button>
+            <button type="submit" name="board_type" value="qanda">Q&A</button> -->
         </form>
 
         <?php
@@ -149,28 +149,23 @@
         
         $board_type = $_GET['board_type'] ?? 'all';
         switch ($board_type) {
-            case 'notification':
-                $sql = "SELECT * FROM n_board";
-                $check = 0;
-                break;
-            case 'freeboard':
-                $sql = "SELECT * FROM s_board";
-                $check = 0;
-                break;
-            case 'reference':
-                $sql = "SELECT * FROM r_board";
-                $check = 0;
-                break;
-            case 'qanda':
-                $sql = "SELECT * FROM q_board";
-                $check = 0;
-                break;
+            // case 'notification':
+            //     $sql = "SELECT * FROM n_board";
+            //     break;
+            // case 'freeboard':
+            //     $sql = "SELECT * FROM s_board";
+            //     break;
+            // case 'reference':
+            //     $sql = "SELECT * FROM r_board";
+            //     break;
+            // case 'qanda':
+            //     $sql = "SELECT * FROM q_board";
+            //     break;
             default:
                 $sql = 'select * from s_board 
                 union select number, title, board, userid, nickname, views, likes, created, filename, "자료실" from r_board
                 union select number, title, board, userid, nickname, views, likes, created, if(important >= 1, "중요 공지사항", "일반 공지사항")  , "공지사항" from n_board
                 union select number, title, board, userid, nickname, views, likes, created, if(isSecret >= 1, "비밀글", "일반글") , "질문" from q_board;';
-                $chekc = 1;
                 break;
         }
         $result = mysqli_query($conn, $sql);
@@ -223,17 +218,10 @@
                                 <?php echo $row['filename']; ?>
                             </td>
                             <td>
-                                <?php if ($check) { ?>
-                                    <a
-                                        href="delete.php?number=<?php echo $row['number']; ?>&board=<?php echo $row['filename']; ?>">
-                                        <?php echo 'X'; ?>
-                                    </a>
-                                <?php } else {
-                                    ?>
-                                    <a href="delete.php?number=<?php echo $row['number']; ?>">
-                                        <?php echo 'X'; ?>
-                                    </a>
-                                <?php } ?>
+                                <a
+                                    href="delete.php?number=<?php echo $row['number']; ?>&board=<?php echo $row['filename']; ?>">
+                                    <?php echo 'X'; ?>
+                                </a>
                             </td>
                         </tr>
                     <?php } ?>
