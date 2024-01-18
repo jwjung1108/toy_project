@@ -18,7 +18,7 @@ if ($board == "자료실") {
     $sql = "DELETE from r_board where number='$number'";
 } else if ($board == "공지사항") {
     $sql = "DELETE from n_board where number = '$number'";
-} else if ($board == "Q&A") {
+} else if ($board == "질문") {
     $sql = "DELETE from q_board where number = '$number'";
 } else {
     $sql = "DELETE from s_board where number = '$number'";
