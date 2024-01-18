@@ -216,7 +216,7 @@
                             <td>
                                 <?php echo $row['filename']; ?>
                             </td>
-                            <td><a href="delete.php?number=<?php echo $row['number']; ?>">
+                            <td><a href="delete.php?number=<?php echo $row['number'];?>&board=<?php echo $row['filename'];?>">
                                     <?php echo 'X'; ?>
                                 </a>
                             </td>

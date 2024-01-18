@@ -1,64 +1,45 @@
 <?php
 include '../../connect.php';
 session_start();
-?>
 
-<?php
-// 사용자 권한 확인
-$userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
-
-$sql = "SELECT authority FROM users WHERE id='$userid'";
-$row = mysqli_fetch_array(mysqli_query($conn, $sql));
-
-?>
-
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-</head>
-
-<body>
-    <?php
-    $number = $_GET['number'];
-    $check_user = "SELECT userid FROM board WHERE userid = '$userid' AND number = '$number'";
-    $result = mysqli_fetch_array(mysqli_query($conn, $check_user));
-
-    $sql = "select visible from board where number = '$number'";
-    $row = mysqli_fetch_array(mysqli_query($conn, $sql));
-
-
-    if ($userid != $result['userid']) {
-        if ($row['authority'] != 2) {
-            ?>
-            <script>
-                alert("접근 권한이 없습니다.");
-                location.href = "managerBoard.php";
-            </script>
-            <?php
-            exit();
-        }
-        $sql = "DELETE FROM board SET visible = 0 WHERE number = '$number'";
-        mysqli_query($conn, $sql);
-        ?>
-        <script>
-            alert("게시글이 삭제되었습니다.");
-            location.href = "managerBoard.php";
-        </script>
-        <?php
-        ?>
-        <?php
-    } else {
-        $sql = "UPDATE board SET visible = 0 WHERE number = '$number'";
-        mysqli_query($conn, $sql);
-        ?>
-        <script>
-            alert("게시글이 삭제되었습니다.");
-            location.href = "managerBoard.php";
-        </script>
-        <?php
-    }
+if ($_SESSION['authority'] != 'admin') {
     ?>
-</body>
+    <script>
+        alert("접근 권한이 없습니다");
+    </script>
+    <?php
+    exit();
+}
 
-</html>
+$number = $_GET['number'];
+$board = $_GET['board'];
+
+if ($board == "자료실") {
+    $sql = "DELETE from r_board where number='$number'";
+} else if ($board == "공지사항") {
+    $sql = "DELETE from n_board where number = '$number'";
+} else if ($board == "Q&A") {
+    $sql = "DELETE from q_board where number = '$number'";
+} else {
+    $sql = "DELETE from s_board where number = '$number'";
+}
+
+$result = mysqli_query($conn, $sql);
+
+if ($result) {
+    ?>
+    <script>
+        alert("게시글이 삭제되었습니다.");
+        history.go(-1);
+    </script>
+    <?php
+} else {
+    ?>
+    <script>
+        alert("오류 발생!");
+        history.go.(-1);
+    </script>
+    <?php
+}
+
+?>
