@@ -202,7 +202,7 @@
                                 <?php echo $row['board']; ?>
                             </td>
                             <td>
-                                <?php echo $row['userid']; ?>
+                                <?php echo $row['nickname']; ?>
                             </td>
                             <td>
                                 <?php echo $row['created']; ?>
