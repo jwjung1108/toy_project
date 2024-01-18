@@ -167,10 +167,10 @@ $result = mysqli_query($conn, $sql);
 
         <!-- 검색 모듈 -->
         <div id="search_box">
-            <form action="../search_result.php" method="get">
+            <form action="r_search_result.php" method="get">
                 <select name="catgo">
                     <option value="title">제목</option>
-                    <option value="userid">글쓴이</option>
+                    <option value="nickname">글쓴이</option>
                     <option value="board">내용</option>
                 </select>
                 <input type="text" name="search" required="required" />
