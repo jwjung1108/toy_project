@@ -357,7 +357,7 @@ include '../point/ReadPoint.php';
                                 <?php echo $i++; ?>
                             </th>
                             <td>
-                                <?php echo $row['text']; ?>
+                                <?php echo $row['comment']; ?>
                             </td>
                             <td>
                                 <?php echo $row['nickname']; ?>
