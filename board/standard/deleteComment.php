@@ -19,8 +19,8 @@ if ($_SESSION['UserID'] != $row['userid']) {
     if ($rows['authority'] != 2) {
         ?>
         <script>
-            alert("'접근 권한이 없습니다.';");
-            location.href = "list_board.php";
+            alert("접근 권한이 없습니다.");
+            history.go(-1);
         </script>
         <?php
         exit();
