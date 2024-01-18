@@ -149,19 +149,22 @@
         $board_type = $_GET['board_type'] ?? 'all';
         switch ($board_type) {
             case 'notification':
-                $sql = "SELECT * FROM board WHERE notification = 1";
+                $sql = "SELECT * FROM n_board";
                 break;
             case 'freeboard':
-                $sql = "SELECT * FROM board WHERE freeboard = 1";
+                $sql = "SELECT * FROM s_board";
                 break;
             case 'reference':
-                $sql = "SELECT * FROM reference";
+                $sql = "SELECT * FROM r_board";
                 break;
             case 'qanda':
-                $sql = "SELECT * FROM board WHERE qanda = 1";
+                $sql = "SELECT * FROM q_board";
                 break;
             default:
-                $sql = "SELECT * FROM board";
+                $sql = 'select * from s_board 
+                union select number, title, board, userid, nickname, views, likes, created, filename, "자료실" from r_board
+                union select number, title, board, userid, nickname, views, likes, created, if(important >= 1, "중요 공지사항", "일반 공지사항")  , "공지사항" from n_board
+                union select number, title, board, userid, nickname, views, likes, created, if(isSecret >= 1, "비밀글", "일반글") , "Q&A" from q_board;';
                 break;
         }
         $result = mysqli_query($conn, $sql);
