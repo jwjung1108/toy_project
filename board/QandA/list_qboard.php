@@ -164,8 +164,6 @@ $result = mysqli_query($conn, $sql);
                         <option value="board">내용</option>
                     </select>
                     <input type="text" name="search" required="required" />
-
-
                     <button>검색</button>
                 </form>
             </div>

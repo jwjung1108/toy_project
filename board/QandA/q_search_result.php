@@ -25,7 +25,7 @@ $category = isset($_GET['catgo']) ? $_GET['catgo'] : '';
 
 
 
-$sql = "SELECT * FROM board WHERE $category LIKE '%$search_con%' AND isSecret = 0 $orderBy";
+$sql = "SELECT * FROM q_board WHERE $category LIKE '%$search_con%' AND isSecret = 0 $orderBy";
 $result = mysqli_query($conn, $sql);
 
 ?>
