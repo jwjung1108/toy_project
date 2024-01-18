@@ -30,7 +30,7 @@ if ($_SESSION['UserID'] != $row['userid']) {
 }
 
 $sql = "DELETE from s_comment where number = '$number'";
-$result = mysqli_fetch_array(mysqli_query($conn, $sql));
+$result = mysqli_query($conn, $sql);
 
 if ($result) {
     ?>
