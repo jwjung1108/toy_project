@@ -4,7 +4,7 @@ include '../../connect.php';
 // 정렬 방식 설정
 $sort = isset($_GET['sort']) ? $_GET['sort'] : 'number'; // 기본값은 순번
 $sortIcon = ($sort == 'number') ? '▲' : '▼';
-
+$search_con = isset($_GET['search']) ? $_GET['search'] : '';
 // 정렬 기준 설정
 $orderBy = '';
 switch ($sort) {
@@ -20,10 +20,12 @@ switch ($sort) {
 }
 
 // SQL 쿼리문 수정
-$search = isset($_GET['search']) ? $_GET['search'] : '';
+$search_con = isset($_GET['search']) ? $_GET['search'] : '';
 $category = isset($_GET['catgo']) ? $_GET['catgo'] : '';
 
-$sql = "SELECT * FROM n_board where $category LIKE '%$search%' $orderBy";
+
+
+$sql = "SELECT * FROM board WHERE $category LIKE '%$search_con%' AND isSecret = 0 $orderBy";
 $result = mysqli_query($conn, $sql);
 
 ?>
@@ -184,13 +186,14 @@ $result = mysqli_query($conn, $sql);
         </h1>
         <div class="table-responsive">
             <div id="search_box">
-                <form action="./n_search_result.php" method="get">
+                <form action="q_search_result.php" method="get">
                     <select name="catgo">
                         <option value="title">제목</option>
                         <option value="nickname">글쓴이</option>
                         <option value="board">내용</option>
                     </select>
                     <input type="text" name="search" required="required" />
+
                     <button>검색</button>
                 </form>
             </div>
@@ -210,10 +213,9 @@ $result = mysqli_query($conn, $sql);
                     <?php
                     $i = 1;
                     while ($row = mysqli_fetch_array($result)) {
-                        $boardType = '';
-                        $link = '';
-                        $boardType = '공지사항';
-                        $link = "n_readBoard.php?number=".$row['number'];
+                        $boardType = 'Q&A';
+                        $link = "q_readBoard.php?number=" . $row['number'];
+
                         ?>
                         <tr>
                             <td>
@@ -244,7 +246,6 @@ $result = mysqli_query($conn, $sql);
     <div class="text-center">
         <a href='/' class="back-to-list">목록으로</a>
     </div>
-
 </body>
 
 </html>
