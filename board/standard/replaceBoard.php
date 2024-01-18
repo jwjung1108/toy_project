@@ -3,7 +3,7 @@ include '../../connect.php';
 
 session_start();
 
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+$userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
 if ($userId == '') {
     ?>
     <script>
@@ -14,27 +14,14 @@ if ($userId == '') {
     exit();
 }
 
-// 이메일 인증
-// $v_sql = "select verify from users where id = '$userId'";
-// $v_check = mysqli_fetch_array(mysqli_query($conn, $v_sql));
-
-// if($v_check['verify'] == 0){
-?>
-<script>
-    //         alert("이메일인증을 진행해주세요");
-    //         location.href = "../../index.php";
-    //     </script>
-<?php
-//     exit();
-// }
 
 $number = $_GET['number'];
 
-$row = mysqli_fetch_array(mysqli_query($conn, "select * from board where number= '$number'"));
+$row = mysqli_fetch_array(mysqli_query($conn, "select * from s_board where number= '$number'"));
 $title = $row['title'];
 $board = $row['board'];
 
-$check_authority = mysqli_fetch_array(mysqli_query($conn, "SELECT authority FROM users WHERE id='$userId'"));
+$check_authority = mysqli_fetch_array(mysqli_query($conn, "SELECT authority FROM users WHERE id='$userid'"));
 ?>
 
 <!DOCTYPE html>
@@ -45,10 +32,10 @@ $check_authority = mysqli_fetch_array(mysqli_query($conn, "SELECT authority FROM
 
 <body>
     <?php
-    $check_user = "SELECT username FROM board WHERE username = '$userId' AND number = '$number'";
+    $check_user = "SELECT userid FROM s_board WHERE userid = '$userid' AND number = '$number'";
     $result = mysqli_fetch_array(mysqli_query($conn, $check_user));
 
-    if ($userId != $result['username']) {
+    if ($userId != $result['userid']) {
         if ($check_authority['authority'] != 2) {
             ?>
             <script>

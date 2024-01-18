@@ -4,9 +4,9 @@ include '../point/WriteCoPoint.php';
 
 $number = $_GET['number'];
 $sql = "
-    insert into comment
-    (userID, boardNumber, text, created, visible)
-    values('$userId','$number','{$_POST['text']}', NOW(), 1
+    insert into s_comment
+    (userid, boardnumber, text, created)
+    values('$userid','$number','{$_POST['text']}', NOW()
     )";
 
 $result = mysqli_query($conn, $sql);
@@ -17,7 +17,7 @@ if ($result === false) {
 ?>
     <script>
         alert("댓글이 작성되었습니다.");
-        location.href = "readBoard.php?number=<?php echo $number?>";
+        history.go(-1);
     </script>
 <?php
 }

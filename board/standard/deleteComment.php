@@ -1,78 +1,50 @@
 <?php
 include '../../connect.php';
-$number = $_GET['Number'];
-$BoardNumber = $_GET['$Bnumber'];
-$sql = "select userID from comment where Number= '$number'";
+$number = $_GET['number'];
+$boardnumber = $_GET['number'];
+$sql = "select userid from s_comment where number= '$number'";
 $row = mysqli_fetch_array(mysqli_query($conn, $sql));
-$userid = $_SESSION['userId']
-?>
+$userid = $_SESSION['UserID']
+    ?>
 
 <?php
 //사용자 권한 확인
 session_start();
-$userId = $_SESSION['userId'];
+$userid = $_SESSION['UserID'];
 
-$check_user = "select authority from users where id='$userId'";
+$check_user = "select authority from users where id='$userid'";
 $rows = mysqli_fetch_array(mysqli_query($conn, $check_user));
 
-?>
-
-
-<!DOCTYPE html>
-<html lang="ko">
-
-<head>
-</head>
-
-<body>
-    <?php
-    if ($_SESSION['userId'] != $row['userID']) {
-        if($rows['authority'] != 2){
-            ?>
-            <script>
-                alert("'접근 권한이 없습니다.';");
-                location.href = "list_board.php";
-            </script>
-            <?php
-            exit();
-        }
-        ?>
-        <?php
-    }
-    $sql = "select visible from comment where number = '$number' and visible = 1";
-    $row = mysqli_fetch_array(mysqli_query($conn, $sql));
-
-    if($row['visible'] == 1){
-        $sql = "update comment set visible = 0 where number = '$number'";
-        $result = mysqli_query($conn, $sql);
-        if ($result === false) {
-            ?>
-            <script>
-                alert(""삭제에 문제가 생겼습니다.관리자에게 문의해주세요.";");
-                location.href = "list_board.php";
-            </script>
-            <?php
-        } else {
-            ?>
-            <script>
-                alert("댓글이 삭제되었습니다.");
-                window.location.href = "list_board.php";
-            </script>
-            <?php
-        }
-    }
-    else {
+if ($_SESSION['UserID'] != $row['userid']) {
+    if ($rows['authority'] != 2) {
         ?>
         <script>
-            alert("이미 삭제된 댓글입니다.");
-            window.location.href = "list_board.php";
+            alert("'접근 권한이 없습니다.';");
+            location.href = "list_board.php";
         </script>
         <?php
+        exit();
     }
-        ?>
+?>
+<?php
+}
 
-    
-    
-</body>
+$sql = "DELETE from s_comment where number = '$number'";
+$result = mysqli_fetch_array(mysqli_query($conn, $sql));
 
-</html>
+if ($result) {
+    ?>
+    <script>
+        alert("댓글이 삭제되었습니다.");
+        history.go(-1);
+    </script>
+    <?php
+} else {
+    ?>
+    <script>
+        alert("삭제에 문제가 생겼습니다. 관리자에게 문의해주세요.");
+        history.go(-1);
+    </script>
+    <?php
+}
+?>

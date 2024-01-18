@@ -5,9 +5,9 @@ session_start();
 
 <?php
 // 사용자 권한 확인
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+$userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
 
-$sql = "SELECT authority FROM users WHERE id='$userId'";
+$sql = "SELECT authority FROM users WHERE id='$userid'";
 $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 
 ?>
@@ -21,10 +21,10 @@ $row = mysqli_fetch_array(mysqli_query($conn, $sql));
 <body>
     <?php
     $number = $_GET['number'];
-    $check_user = "SELECT username FROM board WHERE username = '$userId' AND number = '$number'";
+    $check_user = "SELECT userid FROM s_board WHERE userid = '$userid' AND number = '$number'";
     $result = mysqli_fetch_array(mysqli_query($conn, $check_user));
 
-    if ($userId != $result['username']) {
+    if ($userId != $result['userid']) {
         if ($row['authority'] != 2) {
             ?>
             <script>
@@ -34,7 +34,7 @@ $row = mysqli_fetch_array(mysqli_query($conn, $sql));
             <?php
             exit();
         }
-        $sql = "UPDATE board SET visible = 0 WHERE number = '$number'";
+        $sql = "DELETE from s_board WHERE number = '$number'";
         mysqli_query($conn, $sql);
         ?>
     <script>
@@ -45,7 +45,7 @@ $row = mysqli_fetch_array(mysqli_query($conn, $sql));
     ?>
     <?php
     } else {
-        $sql = "UPDATE board SET visible = 0 WHERE number = '$number'";
+        $sql = "DELETE from s_board WHERE number = '$number'";
         mysqli_query($conn, $sql);
         ?>
         <script>

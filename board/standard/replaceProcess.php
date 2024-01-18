@@ -1,9 +1,9 @@
 <?php
 session_start();
-$userId = isset($_SESSION['userId']) ? $_SESSION['userId'] : '';
+$userid = isset($_SESSION['UserID']) ? $_SESSION['UserID'] : '';
 include '../../connect.php';
 
-$sql = "update board set title ='{$_POST['title']}', board='{$_POST['board']}' where number = '{$_GET['number']}'";
+$sql = "update s_board set title ='{$_POST['title']}', board='{$_POST['board']}' where number = '{$_GET['number']}'";
 
 $result = mysqli_query($conn, $sql);
 
@@ -13,7 +13,7 @@ if ($result === false) {
 ?>
     <script>
         alert("게시글이 수정되었습니다.");
-        location.href = "list_board.php";
+        history.go(-1);
     </script>
 <?php
 }
