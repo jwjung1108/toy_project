@@ -21,8 +21,9 @@ switch ($sort) {
 
 // SQL 쿼리문 수정
 $search = isset($_GET['search']) ? $_GET['search'] : '';
+$category = isset($_GET['catgo']) ? $_GET['catgo'] : '';
 
-$sql = "SELECT * FROM n_board LIKE '%$search%' $orderBy";
+$sql = "SELECT * FROM n_board where $category LIKE '%$search%' $orderBy";
 $result = mysqli_query($conn, $sql);
 
 ?>
