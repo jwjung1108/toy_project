@@ -10,7 +10,7 @@ include 'check_admin.php';
 
 <head>
     <script src="color-modes.js"></script>
-    
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="관리자 페이지">
@@ -291,7 +291,8 @@ include 'check_admin.php';
                     <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="/adminPage/adminpage.php">
+                                <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page"
+                                    href="/adminPage/adminpage.php">
                                     <svg class="bi">
                                         <use xlink:href="#house-fill" />
                                     </svg>
@@ -356,6 +357,13 @@ include 'check_admin.php';
                                 </a>
                             </li>
                         </ul>
+                        <hr class="my-3">
+                        <a class="nav-link d-flex align-items-center gap-2" href="/">
+                            <svg class="bi">
+                                <use xlink:href="#arrow-return-left" />
+                            </svg>
+                            메인으로
+                        </a>
                     </div>
                 </div>
             </div>
