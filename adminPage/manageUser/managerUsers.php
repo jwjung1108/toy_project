@@ -318,7 +318,7 @@ include '../check_admin.php';
       </div>
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div class>
         <h2>유저관리</h2>
         <?php
         include '../../connect.php';  // 데이터베이스 연결 정보 포함
@@ -375,11 +375,6 @@ include '../check_admin.php';
     </div>
     <div>
         <h3>등급조정
-    </div>
-
-
-    <div class="container">
-        <div id="search_box">
             <form action="./change_rank.php" method="get">
                 <input type="text" name="user" required="required" />
 
@@ -392,7 +387,6 @@ include '../check_admin.php';
                 </select>
                 <button>변경</button>
             </form>
-        </div>
     </div>
       </main>
     </div>
