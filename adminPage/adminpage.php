@@ -362,7 +362,7 @@ include 'check_admin.php';
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2" href="/">
                                     <svg class="bi">
-                                        <use xlink:href="#arrow-return-left" />
+                                        <use xlink:href="#arrow-bar-left" />
                                     </svg>
                                     메인으로
                                 </a>
