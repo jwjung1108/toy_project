@@ -77,18 +77,20 @@ session_start();
                     <li><a href="/board/QandA/list_rboard.php">자료실</a></li>
                     <li><a href="/board/QandA/list_qboard.php">Q&A</a></li>
                 </ul>
+            </section>
+            <section style="float:right">
                 <ul class="links">
                     <?php if (isset($_SESSION['UserID'])) { ?>
                         <?php if ($_SESSION['authority'] == 'admin') { ?>
-                            <li style="float:left;"><a href="/adminPage/adminpage.php">관리자페이지</a></li>
+                            <li ><a href="/adminPage/adminpage.php">관리자페이지</a></li>
                         <?php } else { ?>
-                            <li style="float:left;"><a href="/MyPage/mypage.php">마이페이지</a></li>
+                            <li><a href="/MyPage/mypage.php">마이페이지</a></li>
                         <?php } ?>
-                        <li style="float:left;"><a onclick="logout()">로그아웃</a></li>
+                        <li><a onclick="logout()">로그아웃</a></li>
 
                     <?php } else { ?>
-                        <li style="float:left;"><a href="/join/login.php">로그인</a></li>
-                        <li style="float:left;"><a href="/join/signup.php">회원가입</a></li>
+                        <li><a href="/join/login.php">로그인</a></li>
+                        <li><a href="/join/signup.php">회원가입</a></li>
                     <?php } ?>
                 </ul>
             </section>
