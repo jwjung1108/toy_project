@@ -6,17 +6,14 @@ session_start();
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>홈페이지</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css"
-        integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <title>지원이의 산뜻한 페이지</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
 
-    <link rel="stylesheet" href="./css/index_style.css">
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"
-        integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD"
-        crossorigin="anonymous"></script>
-    
     <script>
         function goToLoginPage() {
             window.location.href = "/join/login.php";
@@ -51,153 +48,150 @@ session_start();
     </script>
 </head>
 
-<body>
+<body class="is-preload">
 
-    <!--- GPT 코드 주석--->
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
 
-    <nav class="navbar navbar-custom">
+				<!-- Intro -->
+					<div id="intro">
+						<h1>This is<br />
+						Massively</h1>
+						<p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
+						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
 
-        <div class="container-fluid">
+				<!-- Header -->
+					<header id="header">
+						<a href="/index.php" class="logo">Massively</a>
+					</header>
 
-            <a class="navbar-brand" href="#">학습 커뮤니티</a>
-            <div class="d-flex align-items-center">
-                <?php if (isset($_SESSION['UserID'])) { ?>
-                <span class="navbar-text mr-3">
-                    <?php echo $_SESSION['UserName']; ?> 님 환영합니다
-                </span>
-                <button class="btn btn-outline-light" onclick="logout()">로그아웃</button>
-                <button class="btn btn-outline-light" onclick="goToMyPage()">마이페이지</button>
-                <?php if ($_SESSION['authority'] == 'admin') { ?>
-                <button class="btn btn-outline-light" onclick="goToadminPage()">관리자페이지</button>
-                <?php } ?>
-                <?php } else { ?>
-                <button class="btn btn-outline-light" onclick="goToLoginPage()">로그인</button>
-                <button class="btn btn-outline-light" onclick="goToSignupPage()">회원가입</button>
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="/index.php">메인</a></li>
+							<li><a href="/board/notification/list_nboard.php">공지사항</a></li>
+                            <li><a href="/board/standard/list_board.php">자유게시판</a></li>
+							<li><a href="/board/QandA/list_rboard.php">자료실</a></li>
+                            <li><a href="/board/QandA/list_qboard.php">Q&A</a></li>
+                            <?php if (isset($_SESSION['UserID'])) { ?>
+                                <?php if ($_SESSION['authority'] == 'admin') { ?>
+                            <li><a href="/adminPage/adminpage.php">관리자페이지</a></li>
+                            <?php } else { ?>
+                                <li><a href="/MyPage/mypage.php">마이페이지</a></li>
+                            <?php } ?>
+                            <li><a onclick="logout()">로그아웃</a></li>
 
-                <?php } ?>
-            </div>
-        </div>
-    </nav>
+                            <?php } else { ?>
+                                <li><a href="/join/login.php">로그인</a></li>
+                                <li><a href="/join/signup.php">회원가입</a></li>
+                            <?php } ?>
+						</ul>
+						
+					</nav>
 
+				<!-- Main -->
+					<div id="main">
 
-    <!-- Main Content -->
-    <div class="container mt-4">
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<h2><a href="#">제목<br />
+									이에요</a></h2>
+									<p>사이트 설명.</p>
+								</header>
+								<a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
+								<ul class="actions special">
+									<li><a href="#" class="button large">Full Story</a></li>
+								</ul>
+							</article>
 
-        <!-- Section Title -->
-        <div class="section-title">
-            메뉴
-        </div>
+						<!-- Posts -->
+                        <section class="posts">
+								<article>
+									<header>
+										<h2><a href="#">공지사항</a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+									<p>공지사항입니다.</p>
+									<ul class="actions special">
+										<li><a href="#" class="button">이동하기</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										
+										<h2><a href="#">자유게시판</a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
+									<p>자유게시판입니다.</p>
+									<ul class="actions special">
+										<li><a href="#" class="button">이동하기</a></li>
+									</ul>
+								</article>
+								<article>
+									<header>
+										
+										<h2><a href="#">자료실</a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
+									<p>자료실입니다.</p>
+									<ul class="actions special">
+										<li><a href="#" class="button">이동하기</a></li>
+									</ul>
+								</article>
+                                <article>
+									<header>
+										
+										<h2><a href="#">Q&A</a></h2>
+									</header>
+									<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
+									<p>Q&A입니다.</p>
+									<ul class="actions special">
+										<li><a href="#" class="button">이동하기</a></li>
+									</ul>
+								</article>
+							</section>
+						
 
-        <!-- Features -->
-        <div class="row">
-            <!-- 공지 사항 -->
-            <div class="col-md-3">
-                <div class="card card-custom">
-                    <img src="/image/notice.png" alt="공지 사항">
-                    <div class="card-body card-body-custom ">
-                        <h5 class="card-title">공지사항</h5>
-                        <p class="card-text">공지사항 읽어라.</p>
-                        <button onclick="goTonotificationBoardPage()">공지사항</button>
-                    </div>
-                </div>
-            </div>
+					</div>
 
-            <!-- 자유 게시판 -->
-            <div class="col-md-3">
-                <div class="card card-custom">
-                    <img src="/image/tip.png" alt="자유게시판">
-                    <div class="card-body card-body-custom">
-                        <h5 class="card-title">자유게시판</h5>
-                        <p class="card-text">자유롭게 사용해라.</p>
-                        <button onclick="goTocommonBoardPage()">자유게시판</button>
+				<!-- Footer -->
+					<footer id="footer">
+							<section class="split contact">
+							<section class="alt">
+								<h3>무슨</h3>
+								<p>설명적는곳</p>
+							</section>
+							<section>
+								<h3>무슨</h3>
+								<p><a href="#">설명적는곳</a></p>
+							</section>
+							<section>
+								<h3>무슨</h3>
+								<p><a href="#">설명적는곳</a></p>
+							</section>
+						</section>
+					</footer>
 
-                    </div>
-                </div>
-            </div>
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
 
-            <!-- 자료실 -->
-            <div class="col-md-3">
-                <div class="card card-custom">
-                    <img src="/image/resource.png" alt="resouce">
-                    <div class="card-body card-body-custom">
-                        <h5 class="card-title">자료실</h5>
-                        <p class="card-text">좋은 자료가 많다.</p>
-                        <button onclick="goToReferencePage()">자료실</button>
-                    </div>
-                </div>
-            </div>
+			</div>
 
-            <!-- Q&A -->
-            <div class="col-md-3">
-                <div class="card card-custom">
-                    <img src="/image/Q&A.png" alt="Q&A">
-                    <div class="card-body card-body-custom">
-                        <h5 class="card-title">Q&A</h5>
-                        <p class="card-text">묻고 답하라.</p>
-                        <button onclick="goToQandABoardPage()">Q&A</button>
-                    </div>
-                </div>
-            </div>
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
-
-        </div>
-
-    </div>
-
-    <div class="container mt-4">
-        <h2>공지사항</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">게시판 종류</th>
-                    <th scope="col">제목</th>
-                    <th scope="col">작성자</th>
-                    <th scope="col">등록일</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                include './connect.php'; // 데이터베이스 연결 정보 포함
-                
-                // 최신 공지사항 5개를 가져오는 쿼리
-                $sql = 'SELECT * FROM n_board ORDER BY important DESC, created DESC LIMIT 5';
-                $result = mysqli_query($conn, $sql); ?>
-
-                <?php
-                $i = 1;
-                while ($row = mysqli_fetch_array($result)) {
-                    $boardType = '';
-                    $class = '';
-                    if ($row['important'] == 1) {
-                        $boardType = '중요 공지사항';
-                        $class = 'important';
-                    } elseif ($row['important'] == 0) {
-                        $boardType = '일반 공지사항';
-                        $class = 'generic';
-                    }
-                    ?>
-                    <td class='<?php echo $class; ?>'>
-                        <?php echo $boardType; ?>
-                    </td>
-                    <td>
-                        <?php echo $row['title']; ?>
-                    </td>
-                    <td>
-                        <?php echo $row['username']; ?>
-                    </td>
-                    <td>
-                        <?php echo $row['created']; ?>
-                    </td>
-                    </tr>
-                    <?php
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
-
-
-
-</body>
-
+	</body>
 </html>
