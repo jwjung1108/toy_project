@@ -55,18 +55,16 @@ session_start();
 
 				<!-- Intro -->
 					<div id="intro">
-						<h1>This is<br />
-						Massively</h1>
-						<p>A free, fully responsive HTML5 + CSS3 site template designed by <a href="https://twitter.com/ajlkn">@ajlkn</a> for <a href="https://html5up.net">HTML5 UP</a><br />
-						and released for free under the <a href="https://html5up.net/license">Creative Commons license</a>.</p>
+						<h1>지원이 최고야</h1>
+						<p>보기싫으면 밑으로!</p>
 						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">계속</a></li>
 						</ul>
 					</div>
 
 				<!-- Header -->
 					<header id="header">
-						<a href="/index.php" class="logo">Massively</a>
+						<a href="/index.php" class="logo">페이지 제목</a>
 					</header>
 
 				<!-- Nav -->
