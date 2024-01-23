@@ -235,41 +235,41 @@ $result = mysqli_query($conn, $sql);
                         <?php } ?>
                     </tbody>
                 </table>
+
+                <div>
+                    <a href="writeForm.php">작성</a>
+                    <a href="/">목록으로 돌아가기</a>
+                </div>
+            </section>
+
+
         </div>
-        <div>
-            <a href="writeForm.php">작성</a>
-            <a href="/">목록으로 돌아가기</a>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <section class="split contact">
+                <section class="alt">
+                    <h3>무슨</h3>
+                    <p>설명적는곳</p>
+                </section>
+                <section>
+                    <h3>무슨</h3>
+                    <p><a href="#">설명적는곳</a></p>
+                </section>
+                <section>
+                    <h3>무슨</h3>
+                    <p><a href="#">설명적는곳</a></p>
+                </section>
+            </section>
+        </footer>
+
+        <!-- Copyright -->
+        <div id="copyright">
+            <ul>
+                <li>&copy; Untitled</li>
+                <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+            </ul>
         </div>
-        </section>
-
-
-    </div>
-
-    <!-- Footer -->
-    <footer id="footer">
-        <section class="split contact">
-            <section class="alt">
-                <h3>무슨</h3>
-                <p>설명적는곳</p>
-            </section>
-            <section>
-                <h3>무슨</h3>
-                <p><a href="#">설명적는곳</a></p>
-            </section>
-            <section>
-                <h3>무슨</h3>
-                <p><a href="#">설명적는곳</a></p>
-            </section>
-        </section>
-    </footer>
-
-    <!-- Copyright -->
-    <div id="copyright">
-        <ul>
-            <li>&copy; Untitled</li>
-            <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-        </ul>
-    </div>
 
     </div>
 
