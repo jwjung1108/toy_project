@@ -158,14 +158,14 @@ $result = mysqli_query($conn, $sql);
 
             <!-- Posts -->
             <section class="post">
-                <h1 class="text-center">자유게시판</h1>
-                <div class="text-end mb-3">
+                <h1>자유게시판</h1>
+                <div>
                     <a href="?sort=views"
-                        class="btn btn-primary <?php echo ($sort == 'views') ? 'active' : ''; ?>">조회수</a>
+                        <?php echo ($sort == 'views') ? 'active' : ''; ?>">조회수</a>
                     <a href="?sort=likes"
-                        class="btn btn-primary <?php echo ($sort == 'likes') ? 'active' : ''; ?>">추천수</a>
+                         <?php echo ($sort == 'likes') ? 'active' : ''; ?>">추천수</a>
                     <a href="?sort=number"
-                        class="btn btn-primary <?php echo ($sort == 'number') ? 'active' : ''; ?>">순번</a>
+                         <?php echo ($sort == 'number') ? 'active' : ''; ?>">순번</a>
                 </div>
 
                 <div id="search_box">
@@ -179,7 +179,7 @@ $result = mysqli_query($conn, $sql);
                         <button>검색</button>
                     </form>
                 </div>
-                <div class="table-responsive">
+                <div>
                     <table class="table">
                         <thead>
                             <tr>
@@ -225,16 +225,16 @@ $result = mysqli_query($conn, $sql);
                                     <th scope="row">
                                         <?php echo $i++; ?>
                                     </th>
-                                    <td class="title-cell"><a href="readBoard.php?number=<?php echo $row['number']; ?>">
+                                    <td ><a href="readBoard.php?number=<?php echo $row['number']; ?>">
                                             <?php echo $row['title']; ?>
                                         </a>
                                     </td>
-                                    <td class="title-cell" style="<?php echo $color; ?>">
+                                    <td  style="<?php echo $color; ?>">
                                         <img src="<?php echo $tierIconPath; ?>" alt="tier" class="tier-icon" />
                                         <?php echo $row['nickname']; ?>
                                     </td>
 
-                                    <td class="title-cell">
+                                    <td>
                                         <?php echo $row['created']; ?>
                                     </td>
                                     <td>
@@ -248,9 +248,9 @@ $result = mysqli_query($conn, $sql);
                         </tbody>
                     </table>
                 </div>
-                <div class="text-center">
-                    <a href="writeForm.php" class="btn btn-primary">작성</a>
-                    <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
+                <div>
+                    <a href="writeForm.php" >작성</a>
+                    <a href="/" >목록으로 돌아가기</a>
                 </div>
             </section>
 
