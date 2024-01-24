@@ -253,43 +253,43 @@ $result = mysqli_query($conn, $sql);
 
 
             </section>
-
-            <!-- Footer -->
-            <footer id="footer">
-                <section class="split contact">
-                    <section class="alt">
-                        <h3>무슨</h3>
-                        <p>설명적는곳</p>
-                    </section>
-                    <section>
-                        <h3>무슨</h3>
-                        <p><a href="#">설명적는곳</a></p>
-                    </section>
-                    <section>
-                        <h3>무슨</h3>
-                        <p><a href="#">설명적는곳</a></p>
-                    </section>
+        </div>
+        <!-- Footer -->
+        <footer id="footer">
+            <section class="split contact">
+                <section class="alt">
+                    <h3>무슨</h3>
+                    <p>설명적는곳</p>
                 </section>
-            </footer>
+                <section>
+                    <h3>무슨</h3>
+                    <p><a href="#">설명적는곳</a></p>
+                </section>
+                <section>
+                    <h3>무슨</h3>
+                    <p><a href="#">설명적는곳</a></p>
+                </section>
+            </section>
+        </footer>
 
-            <!-- Copyright -->
-            <div id="copyright">
-                <ul>
-                    <li>&copy; Untitled</li>
-                    <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-                </ul>
-            </div>
-
+        <!-- Copyright -->
+        <div id="copyright">
+            <ul>
+                <li>&copy; Untitled</li>
+                <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+            </ul>
         </div>
 
-        <!-- Scripts -->
-        <script src="/assets/js/jquery.min.js"></script>
-        <script src="/assets/js/jquery.scrollex.min.js"></script>
-        <script src="/assets/js/jquery.scrolly.min.js"></script>
-        <script src="/assets/js/browser.min.js"></script>
-        <script src="/assets/js/breakpoints.min.js"></script>
-        <script src="/assets/js/util.js"></script>
-        <script src="/assets/js/main.js"></script>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.scrollex.min.js"></script>
+    <script src="/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/assets/js/browser.min.js"></script>
+    <script src="/assets/js/breakpoints.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/main.js"></script>
 
 </body>
 

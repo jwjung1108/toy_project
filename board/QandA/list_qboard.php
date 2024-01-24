@@ -127,7 +127,7 @@ $result = mysqli_query($conn, $sql);
         <!-- Main -->
         <div id="main">
 
-        
+
 
             <!-- Posts -->
             <section class="post">
