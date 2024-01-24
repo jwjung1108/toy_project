@@ -235,7 +235,13 @@ session_start();
                                 $row = mysqli_fetch_array(mysqli_query($conn, $sql));
                                 if ($_SESSION['authority'] == "admin") {
                                     ?>
-                                    <button class="btn-primary" onclick="openCommentModal()">댓글 작성</button>
+                                    <div id="commentModal">
+                                        <form action='q_writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
+                                            <textarea name="comment" style="resize: noen; "></textarea>
+                                            <input type="hidden" name="boardnumber" value="<?php echo $number; ?>">
+                                            <input type="submit" value="작성">
+                                        </form>
+                                    </div>
                                     <?php
                                 }
                             }
@@ -243,13 +249,7 @@ session_start();
 
 
 
-                            <div id="commentModal">
-                                <form action='q_writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
-                                    <textarea name="comment" style="resize: noen; "></textarea>
-                                    <input type="hidden" name="boardnumber" value="<?php echo $number; ?>">
-                                    <input type="submit" value="작성">
-                                </form>
-                            </div>
+
 
 
                             <div class="text-center">
