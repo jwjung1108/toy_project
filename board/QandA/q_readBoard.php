@@ -237,7 +237,7 @@ session_start();
                                     ?>
                                     <div id="commentModal">
                                         <form action='q_writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
-                                            <textarea name="comment" style="resize: noen; "></textarea>
+                                            <textarea name="comment" style="resize: none;"></textarea>
                                             <input type="hidden" name="boardnumber" value="<?php echo $number; ?>">
                                             <input type="submit" value="작성">
                                         </form>
