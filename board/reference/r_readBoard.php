@@ -262,7 +262,7 @@ include '../point/ReadPoint.php';
 
                             <div>
                                 <form action='r_writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
-                                    <textarea name="comment"></textarea>
+                                    <textarea name="comment" style="resize: none;"></textarea>
                                     <input type="hidden" name="boardnumber" value="<?php echo $number; ?>">
                                     <input type="submit" value="작성">
                                 </form>
