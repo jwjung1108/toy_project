@@ -188,7 +188,7 @@ include '../point/ReadPoint.php';
                     $result = mysqli_query($conn, $sql);
                     ?>
                     <div class="container">
-                        <h1 class="text-center">댓글</h1>
+                        <h2>댓글</h2>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -234,7 +234,7 @@ include '../point/ReadPoint.php';
 
                             <div id="commentModal">
                                 <form action='writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
-                                    <textarea name="comment"></textarea>
+                                    <textarea name="comment" style="resize: none;"></textarea>
                                     <input type="hidden" name="boardnumber" value="<?php echo $number; ?>">
                                     <input type="submit" value="작성">
                                 </form>
