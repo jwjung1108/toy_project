@@ -61,7 +61,7 @@ $result = mysqli_query($conn, $sql);
             margin-right: 5px;
             /* 티어 아이콘 간의 간격 조절 */
         }
-    </style>    
+    </style>
     <script>
         function goToLoginPage() {
             window.location.href = "/join/login.php";
@@ -121,7 +121,7 @@ $result = mysqli_query($conn, $sql);
         <nav id="nav">
 
             <ul class="links">
-                <li ><a href="/index.php">메인</a></li>
+                <li><a href="/index.php">메인</a></li>
                 <li><a href="/board/notification/list_nboard.php">공지사항</a></li>
                 <li class="active"><a href="/board/standard/list_board.php">자유게시판</a></li>
                 <li><a href="/board/reference/list_rboard.php">자료실</a></li>
@@ -146,18 +146,15 @@ $result = mysqli_query($conn, $sql);
         <!-- Main -->
         <div id="main">
 
-            
+
 
             <!-- Posts -->
             <section class="post">
                 <h1>자유게시판</h1>
                 <div>
-                    <a href="?sort=views"
-                        <?php echo ($sort == 'views') ? 'active' : ''; ?>">조회수</a>
-                    <a href="?sort=likes"
-                         <?php echo ($sort == 'likes') ? 'active' : ''; ?>">추천수</a>
-                    <a href="?sort=number"
-                         <?php echo ($sort == 'number') ? 'active' : ''; ?>">순번</a>
+                    <a href="?sort=views" class="<?php echo ($sort == 'views') ? 'active' : ''; ?>">조회수</a>
+                    <a href="?sort=likes" class="<?php echo ($sort == 'likes') ? 'active' : ''; ?>">추천수</a>
+                    <a href="?sort=number" class=" <?php echo ($sort == 'number') ? 'active' : ''; ?>">순번</a>
                 </div>
 
                 <div id="search_box">
@@ -217,11 +214,11 @@ $result = mysqli_query($conn, $sql);
                                     <th scope="row">
                                         <?php echo $i++; ?>
                                     </th>
-                                    <td ><a href="readBoard.php?number=<?php echo $row['number']; ?>">
+                                    <td><a href="readBoard.php?number=<?php echo $row['number']; ?>">
                                             <?php echo $row['title']; ?>
                                         </a>
                                     </td>
-                                    <td  style="<?php echo $color; ?>">
+                                    <td style="<?php echo $color; ?>">
                                         <img src="<?php echo $tierIconPath; ?>" alt="tier" class="tier-icon" />
                                         <?php echo $row['nickname']; ?>
                                     </td>
@@ -241,8 +238,8 @@ $result = mysqli_query($conn, $sql);
                     </table>
                 </div>
                 <div>
-                    <a href="writeForm.php" >작성</a>
-                    <a href="/" >목록으로 돌아가기</a>
+                    <a href="writeForm.php">작성</a>
+                    <a href="/">목록으로 돌아가기</a>
                 </div>
             </section>
 
