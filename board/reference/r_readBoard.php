@@ -108,197 +108,172 @@ include '../point/ReadPoint.php';
         <!-- Main -->
         <div id="main">
 
-            
+
             <!-- Posts -->
             <section class="post">
-            <?php
-    $number = $_GET['number']; /* bno함수에 title값을 받아와 넣음*/
-    $board = mysqli_fetch_array(mysqli_query($conn, "select * from r_board where number ='" . $number . "'"));
-
-    $check_table = (mysqli_query($conn, "select * from r_time where userid='" . $_SESSION['UserID'] . "' and boardnumber = '$number'"));
-    $row = mysqli_fetch_array($check_table);
-
-    $result = mysqli_num_rows($check_table) > 0;
-
-    // 현재시간
-    $current_time = time();
-
-    // time table access 시간
-    $db_access = mysqli_fetch_array(mysqli_query($conn, "select access from r_time where boardnumber=$number and userid='{$_SESSION['UserID']}'"));
-
-    $fomater = "Y-m-d H:i:s";
-    $view = $board['views'];
-
-    if ($result) {
-        if ($current_time - strtotime($db_access['access']) > 3600) {
-            $view = $view + 1;
-            if (mysqli_query($conn, "update r_board set views = '" . $view . "' where number = '" . $number . "'")) {
-                $current_time = date($fomater, $current_time);
-                mysqli_query($conn, "update r_time set access = '$current_time' where boardnumber = $number and userid = '{$_SESSION['UserID']}'");
-            }
-        }
-    } else {
-        $view = $view + 1;
-        $current_time = date($fomater, $current_time);
-        mysqli_query($conn, "insert into r_time(userid,boardnumber, access) values('{$_SESSION['UserID']}', $number, '$current_time')");
-        mysqli_query($conn, "update r_board set views = '" . $view . "' where number = '" . $number . "'");
-    }
-    ?>
-    <!-- 글 불러오기 -->
-    <div id="board_read">
-        <h2>
-            <?php echo $board['title']; ?>
-        </h2>
-        <div id="user_info">
-            <?php echo $board['title']; ?>
-            <?php echo $board['created']; ?> 조회:
-            <?php echo $view; ?> 추천:
-            <?php echo $board['likes']; ?>
-            <div id="bo_line"></div>
-        </div>
-        <div id="bo_content">
-            <?php echo nl2br($board['board']); ?>
-        </div>
-
-        <div id="image_container">
-            <?php
-            $imagePath = ''; // 이미지 파일이 아닌 경우 기본적으로 빈 문자열로 초기화
-            
-            // 이미지 파일 확장자 목록
-            $imageExtensions = array('jpg', 'jpeg', 'png', 'gif');
-
-            if (!empty($board['filename'])) {
-                $fileExtension = strtolower(pathinfo($board['filename'], PATHINFO_EXTENSION));
-
-                // 이미지 확장자인 경우 이미지 경로 설정
-                if (in_array($fileExtension, $imageExtensions)) {
-                    $absoluteImagePath = $board['filepath'];
-
-                    // 웹 서버 루트 디렉토리까지의 절대 경로
-                    $webServerRoot = $_SERVER['DOCUMENT_ROOT'];
-
-                    // 상대 경로 생성 (웹 서버 루트 디렉토리 제거)
-                    $imagePath = str_replace($webServerRoot, '', $absoluteImagePath);
-                }
-            }
-
-            // 이미지를 표시할지 여부를 검사하여 이미지를 표시
-            if (!empty($imagePath)) {
-                echo '<img src="' . $imagePath . '" alt="첨부 이미지" id="image">';
-            }
-
-            ?>
-        </div>
-
-        <!-- 목록, 수정, 삭제 -->
-        <div id="bo_ser">
-            <ul>
-
-                <li><a href="r_replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
-                <li><a href="r_deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
-                <li><a href="r_boardLike.php?number=<?php echo $board['number']; ?>">[추천]</a></li>
-            </ul>
-        </div>
-        <div>
-            <?php $download = isset($board['filename']) ? $board['filename'] : '';
-            if ($download === '') {
-                echo "다운로드 파일이 존재하지 않습니다.";
-            } else {
-                echo $board['filename'] . " "; ?>
-                <a href="../r_download.php?number=<?php echo $board['number']; ?>">[다운로드]</a>
                 <?php
-            }
-            ?>
-        </div>
+                $number = $_GET['number']; /* bno함수에 title값을 받아와 넣음*/
+                $board = mysqli_fetch_array(mysqli_query($conn, "select * from r_board where number ='" . $number . "'"));
 
-        <!-- 댓글 -->
-        <?php
-        $sql = "select * from r_comment where boardnumber = '$number'";
-        $result = mysqli_query($conn, $sql);
-        ?>
-        <div class="container">
-            <h1 class="text-center">댓글</h1>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">번호</th>
-                        <th scope="col">내용</th>
-                        <th scope="col">작성자</th>
-                        <th scope="col">등록일</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $i = 1;
-                    while ($row = mysqli_fetch_array($result)) {
-                        ?>
-                        <tr>
-                            <th scope="row">
-                                <?php echo $i++; ?>
-                            </th>
-                            <td>
-                                <a>
-                                <?php echo $row['comment']; ?>
-                                </a>
-                            </td>
-                            <td>
-                                <?php echo $row['nickname']; ?>
-                            </td>
-                            <td>
-                                <?php echo $row['created']; ?>
-                            </td>
-                            <td>
-                                <a href="r_deleteComment.php?number=<?php echo $row['number'] ?>">
-                                    <?php echo "삭제"; ?>
-                                </a>
-                            </td>
-                        </tr>
-                    <?php }
-                    ?>
-                </tbody>
-            </table>
-            <p></p>
-            <div class="text-center">
-                <!-- 댓글 작성 버튼 -->
-                <button class="btn-primary" onclick="openCommentModal()">댓글 작성</button>
+                $check_table = (mysqli_query($conn, "select * from r_time where userid='" . $_SESSION['UserID'] . "' and boardnumber = '$number'"));
+                $row = mysqli_fetch_array($check_table);
 
+                $result = mysqli_num_rows($check_table) > 0;
 
-                <!-- 댓글 작성 모달 -->
-                <div id="modalBackground"></div>
-                <div id="commentModal">
-                    <form action='r_writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
-                        <textarea name="comment"></textarea>
-                        <input type="hidden" name="boardnumber" value="<?php echo $number; ?>">
-                        <input type="submit" value="작성">
-                    </form>
-                </div>
+                // 현재시간
+                $current_time = time();
 
-                <script>
-                    function openCommentModal() {
-                        var modal = document.getElementById('commentModal');
-                        var windowWidth = window.innerWidth;
+                // time table access 시간
+                $db_access = mysqli_fetch_array(mysqli_query($conn, "select access from r_time where boardnumber=$number and userid='{$_SESSION['UserID']}'"));
 
-                        if (windowWidth < 768) { // 모바일 화면의 경우
-                            modal.style.width = "90%";
-                        } else { // 데스크탑 화면의 경우
-                            modal.style.width = "70%";
+                $fomater = "Y-m-d H:i:s";
+                $view = $board['views'];
+
+                if ($result) {
+                    if ($current_time - strtotime($db_access['access']) > 3600) {
+                        $view = $view + 1;
+                        if (mysqli_query($conn, "update r_board set views = '" . $view . "' where number = '" . $number . "'")) {
+                            $current_time = date($fomater, $current_time);
+                            mysqli_query($conn, "update r_time set access = '$current_time' where boardnumber = $number and userid = '{$_SESSION['UserID']}'");
+                        }
+                    }
+                } else {
+                    $view = $view + 1;
+                    $current_time = date($fomater, $current_time);
+                    mysqli_query($conn, "insert into r_time(userid,boardnumber, access) values('{$_SESSION['UserID']}', $number, '$current_time')");
+                    mysqli_query($conn, "update r_board set views = '" . $view . "' where number = '" . $number . "'");
+                }
+                ?>
+                <!-- 글 불러오기 -->
+                <div id="board_read">
+                    <h2>
+                        <?php echo $board['title']; ?>
+                    </h2>
+                    <div id="user_info">
+                        <?php echo $board['title']; ?>
+                        <?php echo $board['created']; ?> 조회:
+                        <?php echo $view; ?> 추천:
+                        <?php echo $board['likes']; ?>
+                        <div id="bo_line"></div>
+                    </div>
+                    <div id="bo_content">
+                        <?php echo nl2br($board['board']); ?>
+                    </div>
+
+                    <div id="image_container">
+                        <?php
+                        $imagePath = ''; // 이미지 파일이 아닌 경우 기본적으로 빈 문자열로 초기화
+                        
+                        // 이미지 파일 확장자 목록
+                        $imageExtensions = array('jpg', 'jpeg', 'png', 'gif');
+
+                        if (!empty($board['filename'])) {
+                            $fileExtension = strtolower(pathinfo($board['filename'], PATHINFO_EXTENSION));
+
+                            // 이미지 확장자인 경우 이미지 경로 설정
+                            if (in_array($fileExtension, $imageExtensions)) {
+                                $absoluteImagePath = $board['filepath'];
+
+                                // 웹 서버 루트 디렉토리까지의 절대 경로
+                                $webServerRoot = $_SERVER['DOCUMENT_ROOT'];
+
+                                // 상대 경로 생성 (웹 서버 루트 디렉토리 제거)
+                                $imagePath = str_replace($webServerRoot, '', $absoluteImagePath);
+                            }
                         }
 
-                        modal.style.display = 'block';
-                        document.getElementById('modalBackground').style.display = 'block';
-                    }
+                        // 이미지를 표시할지 여부를 검사하여 이미지를 표시
+                        if (!empty($imagePath)) {
+                            echo '<img src="' . $imagePath . '" alt="첨부 이미지" id="image">';
+                        }
 
-                    document.getElementById('modalBackground').onclick = function () {
-                        this.style.display = 'none';
-                        document.getElementById('commentModal').style.display = 'none';
-                    };
-                </script>
-                <div class="text-center">
-                    <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
-                </div>
-            </div>
-        </div>
+                        ?>
+                    </div>
+
+                    <!-- 목록, 수정, 삭제 -->
+                    <div id="bo_ser">
+
+                        <a href="r_replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a>
+                        <a href="r_deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a>
+                        <a href="r_boardLike.php?number=<?php echo $board['number']; ?>">[추천]</a>
+
+                    </div>
+                    <div>
+                        <?php $download = isset($board['filename']) ? $board['filename'] : '';
+                        if ($download === '') {
+                            echo "다운로드 파일이 존재하지 않습니다.";
+                        } else {
+                            echo $board['filename'] . " "; ?>
+                            <a href="../r_download.php?number=<?php echo $board['number']; ?>">[다운로드]</a>
+                            <?php
+                        }
+                        ?>
+                    </div>
+
+                    <!-- 댓글 -->
+                    <?php
+                    $sql = "select * from r_comment where boardnumber = '$number'";
+                    $result = mysqli_query($conn, $sql);
+                    ?>
+                    <div>
+                        <h2>댓글</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">번호</th>
+                                    <th scope="col">내용</th>
+                                    <th scope="col">작성자</th>
+                                    <th scope="col">등록일</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $i = 1;
+                                while ($row = mysqli_fetch_array($result)) {
+                                    ?>
+                                    <tr>
+                                        <th scope="row">
+                                            <?php echo $i++; ?>
+                                        </th>
+                                        <td>
+                                            <a>
+                                                <?php echo $row['comment']; ?>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['nickname']; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $row['created']; ?>
+                                        </td>
+                                        <td>
+                                            <a href="r_deleteComment.php?number=<?php echo $row['number'] ?>">
+                                                <?php echo "삭제"; ?>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php }
+                                ?>
+                            </tbody>
+                        </table>
+                        <p></p>
+                        <div>
+
+                            <div>
+                                <form action='r_writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
+                                    <textarea name="comment"></textarea>
+                                    <input type="hidden" name="boardnumber" value="<?php echo $number; ?>">
+                                    <input type="submit" value="작성">
+                                </form>
+                            </div>
+
+
+                            <div>
+                                <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
+                            </div>
+                        </div>
+                    </div>
             </section>
 
 
