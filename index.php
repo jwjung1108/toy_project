@@ -74,7 +74,7 @@ session_start();
                     <li class="active"><a href="/index.php">메인</a></li>
                     <li><a href="/board/notification/list_nboard.php">공지사항</a></li>
                     <li><a href="/board/standard/list_board.php">자유게시판</a></li>
-                    <li><a href="/board/QandA/list_rboard.php">자료실</a></li>
+                    <li><a href="/board/reference/list_rboard.php">자료실</a></li>
                     <li><a href="/board/QandA/list_qboard.php">Q&A</a></li>
                     <?php if (isset($_SESSION['UserID'])) { ?>
                         <?php if ($_SESSION['authority'] == 'admin') { ?>
@@ -115,7 +115,7 @@ session_start();
                     <a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
                     <p>공지사항입니다.</p>
                     <ul class="actions special">
-                        <li><a href="#" class="button">이동하기</a></li>
+                        <li><a href="/board/notification/list_nboard.php" class="button">이동하기</a></li>
                     </ul>
                 </article>
                 <article>
@@ -126,7 +126,7 @@ session_start();
                     <a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
                     <p>자유게시판입니다.</p>
                     <ul class="actions special">
-                        <li><a href="#" class="button">이동하기</a></li>
+                        <li><a href="/board/standard/list_board.php" class="button">이동하기</a></li>
                     </ul>
                 </article>
                 <article>
@@ -137,7 +137,7 @@ session_start();
                     <a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
                     <p>자료실입니다.</p>
                     <ul class="actions special">
-                        <li><a href="#" class="button">이동하기</a></li>
+                        <li><a href="/board/QandA/list_rboard.php" class="button">이동하기</a></li>
                     </ul>
                 </article>
                 <article>
@@ -148,7 +148,7 @@ session_start();
                     <a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
                     <p>Q&A입니다.</p>
                     <ul class="actions special">
-                        <li><a href="#" class="button">이동하기</a></li>
+                        <li><a href="/board/QandA/list_qboard.php" class="button">이동하기</a></li>
                     </ul>
                 </article>
             </section>

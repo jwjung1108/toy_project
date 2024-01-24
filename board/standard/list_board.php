@@ -61,7 +61,7 @@ $result = mysqli_query($conn, $sql);
             margin-right: 5px;
             /* 티어 아이콘 간의 간격 조절 */
         }
-    </style>    
+    </style>
     <script>
         function goToLoginPage() {
             window.location.href = "/join/login.php";
@@ -121,10 +121,10 @@ $result = mysqli_query($conn, $sql);
         <nav id="nav">
 
             <ul class="links">
-                <li ><a href="/index.php">메인</a></li>
+                <li><a href="/index.php">메인</a></li>
                 <li><a href="/board/notification/list_nboard.php">공지사항</a></li>
                 <li class="active"><a href="/board/standard/list_board.php">자유게시판</a></li>
-                <li><a href="/board/QandA/list_rboard.php">자료실</a></li>
+                <li><a href="/board/reference/list_rboard.php">자료실</a></li>
                 <li><a href="/board/QandA/list_qboard.php">Q&A</a></li>
                 <?php if (isset($_SESSION['UserID'])) { ?>
                     <?php if ($_SESSION['authority'] == 'admin') { ?>
@@ -146,26 +146,15 @@ $result = mysqli_query($conn, $sql);
         <!-- Main -->
         <div id="main">
 
-            <!-- Featured Post -->
-            <article class="post featured">
-                <header class="major">
-                    <h2><a href="#">제목<br />
-                            이에요</a></h2>
-                    <p>사이트 설명.</p>
-                </header>
-                <a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
-            </article>
+
 
             <!-- Posts -->
             <section class="post">
-                <h1 class="text-center">자유게시판</h1>
-                <div class="text-end mb-3">
-                    <a href="?sort=views"
-                        class="btn btn-primary <?php echo ($sort == 'views') ? 'active' : ''; ?>">조회수</a>
-                    <a href="?sort=likes"
-                        class="btn btn-primary <?php echo ($sort == 'likes') ? 'active' : ''; ?>">추천수</a>
-                    <a href="?sort=number"
-                        class="btn btn-primary <?php echo ($sort == 'number') ? 'active' : ''; ?>">순번</a>
+                <h1>자유게시판</h1>
+                <div>
+                    <a href="?sort=views" class="<?php echo ($sort == 'views') ? 'active' : ''; ?>">조회수</a>
+                    <a href="?sort=likes" class="<?php echo ($sort == 'likes') ? 'active' : ''; ?>">추천수</a>
+                    <a href="?sort=number" class=" <?php echo ($sort == 'number') ? 'active' : ''; ?>">순번</a>
                 </div>
 
                 <div id="search_box">
@@ -179,7 +168,7 @@ $result = mysqli_query($conn, $sql);
                         <button>검색</button>
                     </form>
                 </div>
-                <div class="table-responsive">
+                <div>
                     <table class="table">
                         <thead>
                             <tr>
@@ -225,16 +214,16 @@ $result = mysqli_query($conn, $sql);
                                     <th scope="row">
                                         <?php echo $i++; ?>
                                     </th>
-                                    <td class="title-cell"><a href="readBoard.php?number=<?php echo $row['number']; ?>">
+                                    <td><a href="readBoard.php?number=<?php echo $row['number']; ?>">
                                             <?php echo $row['title']; ?>
                                         </a>
                                     </td>
-                                    <td class="title-cell" style="<?php echo $color; ?>">
+                                    <td style="<?php echo $color; ?>">
                                         <img src="<?php echo $tierIconPath; ?>" alt="tier" class="tier-icon" />
                                         <?php echo $row['nickname']; ?>
                                     </td>
 
-                                    <td class="title-cell">
+                                    <td>
                                         <?php echo $row['created']; ?>
                                     </td>
                                     <td>
@@ -248,9 +237,9 @@ $result = mysqli_query($conn, $sql);
                         </tbody>
                     </table>
                 </div>
-                <div class="text-center">
-                    <a href="writeForm.php" class="btn btn-primary">작성</a>
-                    <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
+                <div>
+                    <a href="writeForm.php">작성</a>
+                    <a href="/">목록으로 돌아가기</a>
                 </div>
             </section>
 
