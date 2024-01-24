@@ -164,11 +164,11 @@ include '../point/ReadPoint.php';
                     </div>
                     <!-- 목록, 수정, 삭제 -->
                     <div id="bo_ser">
-                        <ul>
-                            <li><a href="replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
-                            <li><a href="deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
-                            <li><a href="boardLike.php?number=<?php echo $board['number']; ?>">[추천]</a></li>
-                        </ul>
+
+                        <a href="replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a>
+                        <a href="deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a>
+                        <a href="boardLike.php?number=<?php echo $board['number']; ?>">[추천]</a>
+
                     </div>
                     <div>
                         <?php $download = isset($board['filename']) ? $board['filename'] : '';
