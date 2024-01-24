@@ -144,15 +144,7 @@ $result = mysqli_query($conn, $sql);
         <!-- Main -->
         <div id="main">
 
-            <!-- Featured Post -->
-            <article class="post featured">
-                <header class="major">
-                    <h2><a href="#">제목<br />
-                            이에요</a></h2>
-                    <p>사이트 설명.</p>
-                </header>
-                <a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
-            </article>
+           
 
             <!-- Posts -->
             <section class="post">
