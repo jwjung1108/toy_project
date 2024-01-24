@@ -2,113 +2,186 @@
 <html lang="ko">
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>자유 게시판</title>
+    <title>지원이의 산뜻한 페이지</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="/assets/css/noscript.css" />
+    </noscript>
+
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f8ff;
-            padding: 20px;
-            margin: 0;
-        }
-
-        form {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        input[type="text"],
-        textarea,
-        input[type="file"] {
-            width: 95%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-        }
-
-        textarea {
-            resize: none;
-            /* 텍스트 영역의 크기 조절 비활성화 */
-        }
-
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-
-        /* 반응형 스타일 */
-        @media (max-width: 768px) {
-            form {
-                max-width: 90%;
-            }
-        }
-
-        /* "X" 버튼 스타일 */
-        #close-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: #007bff;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 2;
-            /* "X" 버튼은 이전 버튼 위에 위치하도록 z-index 조절 */
+        .tier-icon {
+            width: 20px;
+            /* 이미지의 크기 조절 */
+            height: 20px;
+            display: inline-block;
+            margin-right: 5px;
+            /* 티어 아이콘 간의 간격 조절 */
         }
     </style>
-</head>
-
-<body>
-
-    <form id="boardForm" action="saveBoard.php" method="POST" enctype="multipart/form-data">
-        <h2>글쓰기</h2>
-        <p><input type="text" name="title" id="titleInput" placeholder="제목 (예: 효율적인 시간 관리 방법)"></p>
-        <p><textarea name="board" id="boardInput" placeholder="본문 (학업 노하우, 공부 팁, 대외활동 경험 등을 공유해 주세요)"
-                rows="8"></textarea></p>
-        <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
-        <p><input type="submit" value="작성" onclick="return validateForm()"></p>
-        <button type="button" id="close-button" onclick="goBack()">X</button> <!-- "X" 버튼 추가 -->
-    </form>
-
     <script>
-        function validateForm() {
-            var title = document.getElementById("titleInput").value;
-            var board = document.getElementById("boardInput").value;
-
-            if (title.trim() === '' || board.trim() === '') {
-                alert("제목과 본문을 모두 작성해주세요.");
-                return false; // 제출 방지
-            }
-            return true; // 제출 허용
+        function goToLoginPage() {
+            window.location.href = "/join/login.php";
         }
-
-        document.getElementById("boardForm").addEventListener("submit", function (event) {
-            if (!validateForm()) {
-                event.preventDefault(); // 제출 방지
+        function goToSignupPage() {
+            window.location.href = "/join/signup.php";
+        }
+        function goTocommonBoardPage() {
+            window.location.href = "/board/standard/list_board.php";
+        }
+        function goTonotificationBoardPage() {
+            window.location.href = "/board/notification/list_nboard.php";
+        }
+        function goToQandABoardPage() {
+            window.location.href = "/board/QandA/list_qboard.php";
+        }
+        function goToReferencePage() {
+            window.location.href = "/board/reference/list_rboard.php";
+        }
+        function logout() {
+            const data = confirm("로그아웃 하시겠습니까?");
+            if (data) {
+                location.href = "/join/logoutProcess.php";
             }
-        });
-
-        function goBack() {
-            window.history.back();
+        }
+        function goToadminPage() {
+            window.location.href = "/adminPage/adminpage.php";
+        }
+        function goToMyPage() {
+            window.location.href = "/MyPage/mypage.php";
         }
     </script>
+
+
+</head>
+
+<body class="is-preload">
+
+    <!-- Wrapper -->
+    <div id="wrapper" class="fade-in">
+
+        <!-- Intro -->
+        <div id="intro">
+            <h1>지원이 최고야</h1>
+            <p>보기싫으면 밑으로!</p>
+            <ul class="actions">
+                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">계속</a></li>
+            </ul>
+        </div>
+
+        <!-- Header -->
+        <header id="header">
+            <a href="/index.php" class="logo">페이지 제목</a>
+        </header>
+
+        <!-- Nav -->
+        <nav id="nav">
+
+            <ul class="links">
+                <li><a href="/index.php">메인</a></li>
+                <li><a href="/board/notification/list_nboard.php">공지사항</a></li>
+                <li class="active"><a href="/board/standard/list_board.php">자유게시판</a></li>
+                <li><a href="/board/reference/list_rboard.php">자료실</a></li>
+                <li><a href="/board/QandA/list_qboard.php">Q&A</a></li>
+                <?php if (isset($_SESSION['UserID'])) { ?>
+                    <?php if ($_SESSION['authority'] == 'admin') { ?>
+                        <li><a href="/adminPage/adminpage.php">관리자페이지</a></li>
+                    <?php } else { ?>
+                        <li><a href="/MyPage/mypage.php">마이페이지</a></li>
+                    <?php } ?>
+                    <li><a onclick="logout()">로그아웃</a></li>
+
+                <?php } else { ?>
+                    <li><a href="/join/login.php">로그인</a></li>
+                    <li><a href="/join/signup.php">회원가입</a></li>
+                <?php } ?>
+            </ul>
+
+
+        </nav>
+
+        <!-- Main -->
+        <div id="main">
+
+
+
+            <!-- Posts -->
+            <section class="post">
+                <form id="boardForm" action="saveBoard.php" method="POST" enctype="multipart/form-data">
+                    <h2>글쓰기</h2>
+                    <p><input type="text" name="title" id="titleInput" placeholder="제목 (예: 효율적인 시간 관리 방법)"></p>
+                    <p><textarea name="board" id="boardInput" placeholder="본문 (학업 노하우, 공부 팁, 대외활동 경험 등을 공유해 주세요)"
+                            rows="8" style="resize: none;"></textarea></p>
+                    <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
+                    <p><input type="submit" value="작성" onclick="return validateForm()"></p>
+                    <button type="button" id="close-button" onclick="goBack()">X</button> <!-- "X" 버튼 추가 -->
+                </form>
+
+                <script>
+                    function validateForm() {
+                        var title = document.getElementById("titleInput").value;
+                        var board = document.getElementById("boardInput").value;
+
+                        if (title.trim() === '' || board.trim() === '') {
+                            alert("제목과 본문을 모두 작성해주세요.");
+                            return false; // 제출 방지
+                        }
+                        return true; // 제출 허용
+                    }
+
+                    document.getElementById("boardForm").addEventListener("submit", function (event) {
+                        if (!validateForm()) {
+                            event.preventDefault(); // 제출 방지
+                        }
+                    });
+
+                    function goBack() {
+                        window.history.back();
+                    }
+                </script>
+            </section>
+
+
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <section class="split contact">
+                <section class="alt">
+                    <h3>무슨</h3>
+                    <p>설명적는곳</p>
+                </section>
+                <section>
+                    <h3>무슨</h3>
+                    <p><a href="#">설명적는곳</a></p>
+                </section>
+                <section>
+                    <h3>무슨</h3>
+                    <p><a href="#">설명적는곳</a></p>
+                </section>
+            </section>
+        </footer>
+
+        <!-- Copyright -->
+        <div id="copyright">
+            <ul>
+                <li>&copy; Untitled</li>
+                <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/js/jquery.scrollex.min.js"></script>
+    <script src="/assets/js/jquery.scrolly.min.js"></script>
+    <script src="/assets/js/browser.min.js"></script>
+    <script src="/assets/js/breakpoints.min.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/main.js"></script>
+
 </body>
 
 </html>
