@@ -229,7 +229,7 @@ $result = mysqli_query($conn, $sql);
                 </table>
 
                 <div>
-                    <a href="board\QandA\q_writeForm.php">작성</a>
+                    <a href="q_writeForm.php">작성</a>
                     <a href="/">목록으로 돌아가기</a>
                 </div>
             </section>
