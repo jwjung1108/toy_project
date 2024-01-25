@@ -137,7 +137,7 @@ session_start();
                     <a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
                     <p>자료실입니다.</p>
                     <ul class="actions special">
-                        <li><a href="/board/QandA/list_rboard.php" class="button">이동하기</a></li>
+                        <li><a href="/board/reference/list_rboard.php" class="button">이동하기</a></li>
                     </ul>
                 </article>
                 <article>
