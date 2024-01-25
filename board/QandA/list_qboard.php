@@ -84,14 +84,7 @@ $result = mysqli_query($conn, $sql);
     <!-- Wrapper -->
     <div id="wrapper" class="fade-in">
 
-        <!-- Intro -->
-        <div id="intro">
-            <h1>지원이 최고야</h1>
-            <p>보기싫으면 밑으로!</p>
-            <ul class="actions">
-                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">계속</a></li>
-            </ul>
-        </div>
+        
 
         <!-- Header -->
         <header id="header">
