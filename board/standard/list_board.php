@@ -114,9 +114,9 @@ $result = mysqli_query($conn, $sql);
         <nav id="nav">
 
             <ul class="links">
-                <li class="active"><a href="/index.php">메인</a></li>
+                <li><a href="/index.php">메인</a></li>
                 <li><a href="/board/notification/list_nboard.php">공지사항</a></li>
-                <li><a href="/board/standard/list_board.php">자유게시판</a></li>
+                <li class="active"><a href="/board/standard/list_board.php">자유게시판</a></li>
                 <li><a href="/board/reference/list_rboard.php">자료실</a></li>
                 <li><a href="/board/QandA/list_qboard.php">Q&A</a></li>
             </ul>
