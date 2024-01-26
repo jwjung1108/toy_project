@@ -112,7 +112,7 @@
                     <h2>글쓰기</h2>
                     <p><input type="text" name="title" placeholder="제목 (예: 공지사항)"></p>
                     <p><textarea name="board" placeholder="본문 (경고메세지)" rows="8" style="resize: none;"></textarea></p>
-                    <p>중요 공지사항<input type="checkbox" name="important" value="reference" style="float:right; opacity:1;"></ㅈp>
+                    <p>중요 공지사항<input type="checkbox" name="important" value="reference" style="float:right; opacity:1; appearance: auto;"></ㅈp>
                     <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
                     <p><input type="submit" value="작성"></p>
                     <button type="button" id="close-button" onclick="goBack()">X</button> <!-- "X" 버튼 추가 -->
