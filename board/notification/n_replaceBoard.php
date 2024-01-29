@@ -90,7 +90,7 @@ if ($_SESSION['authority'] != 'admin') {
         <!-- Nav -->
         <nav id="nav">
 
-            <ul class="links">
+        <ul class="links">
                 <li><a href="/index.php">메인</a></li>
                 <li class="active"><a href="/board/notification/list_nboard.php">공지사항</a></li>
                 <li><a href="/board/standard/list_board.php">자유게시판</a></li>
@@ -109,7 +109,6 @@ if ($_SESSION['authority'] != 'admin') {
                     <li><a href="/join/signup.php">회원가입</a></li>
                 <?php } ?>
             </ul>
-
 
         </nav>
 

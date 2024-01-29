@@ -75,12 +75,14 @@ session_start();
         <!-- Nav -->
         <nav id="nav">
 
-            <ul class="links">
+        <ul class="links">
                 <li><a href="/index.php">메인</a></li>
                 <li><a href="/board/notification/list_nboard.php">공지사항</a></li>
                 <li><a href="/board/standard/list_board.php">자유게시판</a></li>
                 <li><a href="/board/reference/list_rboard.php">자료실</a></li>
                 <li class="active"><a href="/board/QandA/list_qboard.php">Q&A</a></li>
+            </ul>
+            <ul class="links" style="flex-grow:0;">
                 <?php if (isset($_SESSION['UserID'])) { ?>
                     <?php if ($_SESSION['authority'] == 'admin') { ?>
                         <li><a href="/adminPage/adminpage.php">관리자페이지</a></li>
@@ -94,7 +96,6 @@ session_start();
                     <li><a href="/join/signup.php">회원가입</a></li>
                 <?php } ?>
             </ul>
-
 
         </nav>
 
