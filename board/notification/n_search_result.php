@@ -107,6 +107,8 @@ $result = mysqli_query($conn, $sql);
                 <li><a href="/board/standard/list_board.php">자유게시판</a></li>
                 <li><a href="/board/reference/list_rboard.php">자료실</a></li>
                 <li><a href="/board/QandA/list_qboard.php">Q&A</a></li>
+            </ul>
+            <ul class="links" style="flex-grow:0;">
                 <?php if (isset($_SESSION['UserID'])) { ?>
                     <?php if ($_SESSION['authority'] == 'admin') { ?>
                         <li><a href="/adminPage/adminpage.php">관리자페이지</a></li>
@@ -120,7 +122,6 @@ $result = mysqli_query($conn, $sql);
                     <li><a href="/join/signup.php">회원가입</a></li>
                 <?php } ?>
             </ul>
-
 
         </nav>
 
