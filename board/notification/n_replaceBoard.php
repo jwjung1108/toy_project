@@ -81,15 +81,7 @@ if ($_SESSION['authority'] != 'admin') {
     <!-- Wrapper -->
     <div id="wrapper" class="fade-in">
 
-        <!-- Intro -->
-        <div id="intro">
-            <h1>지원이 최고야</h1>
-            <p>보기싫으면 밑으로!</p>
-            <ul class="actions">
-                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">계속</a></li>
-            </ul>
-        </div>
-
+       
         <!-- Header -->
         <header id="header">
             <a href="/index.php" class="logo">페이지 제목</a>
@@ -132,7 +124,7 @@ if ($_SESSION['authority'] != 'admin') {
                 $sql = "select authority from users where id='$userid'";
                 $row = mysqli_fetch_array(mysqli_query($conn, $sql));
                 if ($row['authority'] == 2) {
-                    ?><a href="n_writeForm.php" class="btn btn-primary">작성</a>
+                    ?><a href="n_writeForm.php">작성</a>
                     <?php
                 }
                 ?>
@@ -147,7 +139,7 @@ if ($_SESSION['authority'] != 'admin') {
 
 
                 <form action='n_replaceProcess.php?number=<?php echo $number ?>' method="POST">
-                    <p><input type="title" name="title" value=<?php echo $title ?>></p>
+                    <p><input type="title" style="appearance: none;" name="title" value=<?php echo $title ?>></p>
                     <p><textarea name="board" cols="50" rows="10"><?php echo $board ?></textarea></p>
                     <p><input type="submit" value="수정"></p>
                 </form>
