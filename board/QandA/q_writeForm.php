@@ -61,14 +61,7 @@
     <!-- Wrapper -->
     <div id="wrapper" class="fade-in">
 
-        <!-- Intro -->
-        <div id="intro">
-            <h1>지원이 최고야</h1>
-            <p>보기싫으면 밑으로!</p>
-            <ul class="actions">
-                <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">계속</a></li>
-            </ul>
-        </div>
+
 
         <!-- Header -->
         <header id="header">
@@ -109,8 +102,8 @@
             <!-- Posts -->
             <section class="post">
                 <form action="q_saveBoard.php" method="POST" enctype="multipart/form-data">
-                    <button type="button" id="close-button" onclick="goBack()">X</button> <!-- "X" 버튼 추가 -->
-                    <h2>글쓰기</h2>
+                    <h2 style="display: inline-block;">글쓰기</h2>
+                    <a type="button" style="display: inline-block; float: right;" onclick="goBack()">X</a>
                     <p><input type="text" name="title" placeholder="제목 (예: 효율적인 시간 관리 방법)"></p>
                     <p><textarea name="board" placeholder="본문 (질문해주세요.)" rows="8" style="resize: none;"></textarea></p>
                     <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>

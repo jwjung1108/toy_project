@@ -109,13 +109,13 @@
             <!-- Posts -->
             <section class="post">
                 <form id="boardForm" action="saveBoard.php" method="POST" enctype="multipart/form-data">
-                    <h2>글쓰기</h2>
+                    <h2 style="display: inline-block;">글쓰기</h2>
+                    <a type="button" style="display: inline-block; float: right;" onclick="goBack()">X</a>
                     <p><input type="text" name="title" id="titleInput" placeholder="제목 (예: 효율적인 시간 관리 방법)"></p>
                     <p><textarea name="board" id="boardInput" placeholder="본문 (학업 노하우, 공부 팁, 대외활동 경험 등을 공유해 주세요)"
                             rows="8" style="resize: none;"></textarea></p>
                     <p>관련 파일 첨부 (옵션): <input type="file" name="file"></p>
                     <p><input type="submit" value="작성" onclick="return validateForm()"></p>
-                    <button type="button" id="close-button" onclick="goBack()">X</button> <!-- "X" 버튼 추가 -->
                 </form>
 
                 <script>
