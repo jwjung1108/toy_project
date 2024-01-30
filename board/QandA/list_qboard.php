@@ -42,6 +42,12 @@ $result = mysqli_query($conn, $sql);
             margin-right: 5px;
             /* 티어 아이콘 간의 간격 조절 */
         }
+        
+        .search-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
     <script>
         function goToLoginPage() {
@@ -141,8 +147,8 @@ $result = mysqli_query($conn, $sql);
 
                     <!-- 검색 -->
                     <div id="search_box">
-                        <form action="q_search_result.php" method="get">
-                            <select name="catgo">
+                        <form class="search-box" action="q_search_result.php" method="get">
+                            <select style="width:20%">
                                 <option value="title">제목</option>
                                 <option value="nickname">글쓴이</option>
                                 <option value="board">내용</option>

@@ -59,6 +59,24 @@ $result = mysqli_query($conn, $sql);
             margin-right: 5px;
             /* 티어 아이콘 간의 간격 조절 */
         }
+        .btn-sort {
+            text-decoration: none;
+            padding: 4px 12px;
+            margin: 5px;
+            font-size: 12px;
+            display: inline-block;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.21);
+            border-bottom: 4px solid rgba(0, 0, 0, 0.21);
+            border-radius: 4px;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+        }
+        
+        .search-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
     <script>
         function goToLoginPage() {
@@ -146,15 +164,15 @@ $result = mysqli_query($conn, $sql);
             <section class="post">
                 <h1>공지사항</h1>
                 <div class="text-end mb-3">
-                    <a href="?sort=views" <?php echo ($sort == 'views') ? 'active' : ''; ?>">조회수</a>
-                    <a href="?sort=number" <?php echo ($sort == 'number') ? 'active' : ''; ?>">순번</a>
+                    <a href="?sort=views" class=" btn-sort <?php echo ($sort == 'views') ? 'active' : ''; ?>">조회수</a>
+                    <a href="?sort=number" class=" btn- sort <?php echo ($sort == 'number') ? 'active' : ''; ?>">순번</a>
                 </div>
 
 
                 <!-- 검색 -->
                 <div id="search_box">
-                    <form action="n_search_result.php" method="get">
-                        <select name="catgo">
+                    <form class="search-box" action="n_search_result.php" method="get">
+                        <select style="width:20%">
                             <option value="title">제목</option>
                             <option value="nickname">글쓴이</option>
                             <option value="board">내용</option>
