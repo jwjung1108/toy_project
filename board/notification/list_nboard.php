@@ -165,7 +165,7 @@ $result = mysqli_query($conn, $sql);
                 <h1>공지사항</h1>
                 <div class="text-end mb-3">
                     <a href="?sort=views" class=" btn-sort <?php echo ($sort == 'views') ? 'active' : ''; ?>">조회수</a>
-                    <a href="?sort=number" class=" btn- sort <?php echo ($sort == 'number') ? 'active' : ''; ?>">순번</a>
+                    <a href="?sort=number" class=" btn-sort <?php echo ($sort == 'number') ? 'active' : ''; ?>">순번</a>
                 </div>
 
 
