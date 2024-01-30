@@ -23,6 +23,11 @@ include '../point/ReadPoint.php';
             margin-right: 5px;
             /* 티어 아이콘 간의 간격 조절 */
         }
+        .box-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
     <script>
         function goToLoginPage() {
@@ -256,7 +261,7 @@ include '../point/ReadPoint.php';
                         <div>
 
                             <div>
-                                <form action='r_writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
+                                <form class="box-form" action='r_writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
                                     <textarea name="comment" style="resize: none;"></textarea>
                                     <input type="hidden" name="boardnumber" value="<?php echo $number; ?>">
                                     <input type="submit" value="작성">

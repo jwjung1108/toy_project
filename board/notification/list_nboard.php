@@ -72,7 +72,7 @@ $result = mysqli_query($conn, $sql);
             text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
         }
         
-        .search-box {
+        .box-form {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -165,13 +165,13 @@ $result = mysqli_query($conn, $sql);
                 <h1>공지사항</h1>
                 <div class="text-end mb-3">
                     <a href="?sort=views" class=" btn-sort <?php echo ($sort == 'views') ? 'active' : ''; ?>">조회수</a>
-                    <a href="?sort=number" class=" btn-sort <?php echo ($sort == 'number') ? 'active' : ''; ?>">순번</a>
+                    <a href="?sort=number" class=" btn- sort <?php echo ($sort == 'number') ? 'active' : ''; ?>">순번</a>
                 </div>
 
 
                 <!-- 검색 -->
-                <div id="search_box">
-                    <form class="search-box" action="n_search_result.php" method="get">
+                <div >
+                    <form class="box-form" action="n_search_result.php" method="get">
                         <select style="width:20%">
                             <option value="title">제목</option>
                             <option value="nickname">글쓴이</option>

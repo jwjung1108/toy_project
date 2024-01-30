@@ -43,7 +43,7 @@ $result = mysqli_query($conn, $sql);
             /* 티어 아이콘 간의 간격 조절 */
         }
         
-        .search-box {
+        .box-form {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -146,8 +146,8 @@ $result = mysqli_query($conn, $sql);
                     </thead>
 
                     <!-- 검색 -->
-                    <div id="search-box">
-                        <form class="search-box" action="q_search_result.php" method="get">
+                    <div>
+                        <form class="box-form" action="q_search_result.php" method="get">
                             <select style="width:20%">
                                 <option value="title">제목</option>
                                 <option value="nickname">글쓴이</option>

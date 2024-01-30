@@ -24,6 +24,11 @@ session_start();
             margin-right: 5px;
             /* 티어 아이콘 간의 간격 조절 */
         }
+        .box-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
     <script>
         function goToLoginPage() {
@@ -229,7 +234,7 @@ session_start();
                                 if ($_SESSION['authority'] == "admin") {
                                     ?>
                                     <div id="commentModal">
-                                        <form action='q_writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
+                                        <form class="box-form"action='q_writeCommentProcess.php?number=<?php echo $number ?>' method="POST">
                                             <textarea name="comment" style="resize: none;"></textarea>
                                             <input type="hidden" name="boardnumber" value="<?php echo $number; ?>">
                                             <input type="submit" value="작성">

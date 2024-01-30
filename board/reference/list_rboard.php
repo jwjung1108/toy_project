@@ -75,7 +75,7 @@ $result = mysqli_query($conn, $sql);
             text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
         }
 
-        .search-box {
+        .box-form {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -172,8 +172,8 @@ $result = mysqli_query($conn, $sql);
 
 
                 <!-- 검색 모듈 -->
-                <div id="search_box">
-                    <form class="search-box" action="r_search_result.php" method="get">
+                <div>
+                    <form class="box-form" action="r_search_result.php" method="get">
                         <select style="width:20%;">
                             <option value="title">제목</option>
                             <option value="nickname">글쓴이</option>
