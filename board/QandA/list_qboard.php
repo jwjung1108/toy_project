@@ -160,89 +160,90 @@ $result = mysqli_query($conn, $sql);
                         <button>검색</button>
                     </form>
                 </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th scope="col">번호</th>
-                            <th scope="col">제목</th>
-                            <th scope="col">작성자</th>
-                            <th scope="col">등록일</th>
-                            <th scope="col">조회수</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-
-                        $i = 1;
-                        while ($row = mysqli_fetch_array($result)) {
-                            // 비밀글인 경우, authority가 2인 사용자나 작성자만 볼 수 있도록 체크
-                            $authorRank = $row['user_rank'];
-                            $tierIconPath = isset($tierIcons[$authorRank]) ? $tierIcons[$authorRank] : $tierIcons['Default'];
-
-                            // Determine color based on rank
-                            switch ($authorRank) {
-                                case 'Bronze':
-                                    $color = 'color: #cd7f32;'; // Bronze color (e.g., brown)
-                                    break;
-                                case 'Silver':
-                                    $color = 'color: #c0c0c0;'; // Silver color (e.g., silver)
-                                    break;
-                                case 'Gold':
-                                    $color = 'color: #ffd700;'; // Gold color (e.g., gold)
-                                    break;
-                                case 'Platinum':
-                                    $color = 'color: #ff4500;'; // Platinum color (e.g., orange)
-                                    break;
-                                case 'Master':
-                                    $color = 'color: #ff8c00;'; // Master color (e.g., orange)
-                                    break;
-                                default:
-                                    $color = 'color: black;'; // Default color (e.g., black)
-                                    break;
-                            }
-
-                            ?>
+                <div>
+                    <table>
+                        <thead>
                             <tr>
-                                <th scope="row">
-                                    <?php echo $i++; ?>
-                                </th>
-                                <?php
-                                if ($row['isSecret'] == 1) {
-                                    if ($row['userid'] != $userid && $row['authority'] != 'admin') {
-                                        ?>
-                                        <td>
-                                            <?php echo "비밀글입니다."; ?>
-                                        </td>
-                                        <?php
+                                <th scope="col">번호</th>
+                                <th scope="col">제목</th>
+                                <th scope="col">작성자</th>
+                                <th scope="col">등록일</th>
+                                <th scope="col">조회수</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+
+                            $i = 1;
+                            while ($row = mysqli_fetch_array($result)) {
+                                // 비밀글인 경우, authority가 2인 사용자나 작성자만 볼 수 있도록 체크
+                                $authorRank = $row['user_rank'];
+                                $tierIconPath = isset($tierIcons[$authorRank]) ? $tierIcons[$authorRank] : $tierIcons['Default'];
+
+                                // Determine color based on rank
+                                switch ($authorRank) {
+                                    case 'Bronze':
+                                        $color = 'color: #cd7f32;'; // Bronze color (e.g., brown)
+                                        break;
+                                    case 'Silver':
+                                        $color = 'color: #c0c0c0;'; // Silver color (e.g., silver)
+                                        break;
+                                    case 'Gold':
+                                        $color = 'color: #ffd700;'; // Gold color (e.g., gold)
+                                        break;
+                                    case 'Platinum':
+                                        $color = 'color: #ff4500;'; // Platinum color (e.g., orange)
+                                        break;
+                                    case 'Master':
+                                        $color = 'color: #ff8c00;'; // Master color (e.g., orange)
+                                        break;
+                                    default:
+                                        $color = 'color: black;'; // Default color (e.g., black)
+                                        break;
+                                }
+
+                                ?>
+                                <tr>
+                                    <th scope="row">
+                                        <?php echo $i++; ?>
+                                    </th>
+                                    <?php
+                                    if ($row['isSecret'] == 1) {
+                                        if ($row['userid'] != $userid && $row['authority'] != 'admin') {
+                                            ?>
+                                            <td>
+                                                <?php echo "비밀글입니다."; ?>
+                                            </td>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <td><a href="q_readBoard.php?number=<?php echo $row['number']; ?>">
+                                                    <?php echo $row['title']; ?>
+                                                </a>
+                                            </td>
+                                        <?php }
                                     } else {
                                         ?>
                                         <td><a href="q_readBoard.php?number=<?php echo $row['number']; ?>">
                                                 <?php echo $row['title']; ?>
                                             </a>
                                         </td>
-                                    <?php }
-                                } else {
-                                    ?>
-                                    <td><a href="q_readBoard.php?number=<?php echo $row['number']; ?>">
-                                            <?php echo $row['title']; ?>
-                                        </a>
+                                    <?php } ?>
+                                    <td style="<?php echo $color; ?>">
+                                        <img src="<?php echo $tierIconPath; ?>" alt="tier" class="tier-icon" />
+                                        <?php echo $row['nickname']; ?>
                                     </td>
-                                <?php } ?>
-                                <td style="<?php echo $color; ?>">
-                                    <img src="<?php echo $tierIconPath; ?>" alt="tier" class="tier-icon" />
-                                    <?php echo $row['nickname']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['created']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $row['views']; ?>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-
+                                    <td>
+                                        <?php echo $row['created']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row['views']; ?>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
                 <div>
                     <a class="btn-sort" href="q_writeForm.php">작성</a>
                     <a class="btn-sort" href="/">목록으로 돌아가기</a>
