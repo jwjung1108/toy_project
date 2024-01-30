@@ -146,7 +146,7 @@ $result = mysqli_query($conn, $sql);
                     </thead>
 
                     <!-- 검색 -->
-                    <div id="search_box">
+                    <div id="search-box">
                         <form class="search-box" action="q_search_result.php" method="get">
                             <select style="width:20%">
                                 <option value="title">제목</option>
