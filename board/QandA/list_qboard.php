@@ -48,6 +48,18 @@ $result = mysqli_query($conn, $sql);
             justify-content: center;
             align-items: center;
         }
+        .btn-sort {
+            text-decoration: none;
+            padding: 4px 12px;
+            margin: 5px;
+            font-size: 12px;
+            display: inline-block;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.21);
+            border-bottom: 4px solid rgba(0, 0, 0, 0.21);
+            border-radius: 4px;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+        }
         
     </style>
     <script>
@@ -232,8 +244,8 @@ $result = mysqli_query($conn, $sql);
                 </table>
 
                 <div>
-                    <a href="q_writeForm.php">작성</a>
-                    <a href="/">목록으로 돌아가기</a>
+                    <a class="btn-sort" href="q_writeForm.php">작성</a>
+                    <a class="btn-sort" href="/">목록으로 돌아가기</a>
                 </div>
             </section>
 

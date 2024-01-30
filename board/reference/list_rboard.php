@@ -253,8 +253,8 @@ $result = mysqli_query($conn, $sql);
                     </table>
                 </div>
                 <div>
-                    <a href="r_writeForm.php">작성</a>
-                    <a href="/">목록으로 돌아가기</a>
+                    <a class="btn-sort" href="r_writeForm.php">작성</a>
+                    <a class="btn-sort" href="/">목록으로 돌아가기</a>
                 </div>
             </section>
 
