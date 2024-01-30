@@ -42,12 +42,13 @@ $result = mysqli_query($conn, $sql);
             margin-right: 5px;
             /* 티어 아이콘 간의 간격 조절 */
         }
-        
+
         .box-form {
             display: flex;
             justify-content: center;
             align-items: center;
         }
+
         .btn-sort {
             text-decoration: none;
             padding: 4px 12px;
@@ -60,7 +61,6 @@ $result = mysqli_query($conn, $sql);
             border-radius: 4px;
             text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
         }
-        
     </style>
     <script>
         function goToLoginPage() {
@@ -103,7 +103,7 @@ $result = mysqli_query($conn, $sql);
     <!-- Wrapper -->
     <div id="wrapper" class="fade-in">
 
-        
+
 
         <!-- Header -->
         <header id="header">
@@ -147,6 +147,19 @@ $result = mysqli_query($conn, $sql);
             <!-- Posts -->
             <section class="post">
                 <h1>Q&A 게시판</h1>
+
+                <!-- 검색 -->
+                <div>
+                    <form class="box-form" action="q_search_result.php" method="get">
+                        <select style="width:20%">
+                            <option value="title">제목</option>
+                            <option value="nickname">글쓴이</option>
+                            <option value="board">내용</option>
+                        </select>
+                        <input type="text" name="search" required="required" />
+                        <button>검색</button>
+                    </form>
+                </div>
                 <table>
                     <thead>
                         <tr>
@@ -157,19 +170,6 @@ $result = mysqli_query($conn, $sql);
                             <th scope="col">조회수</th>
                         </tr>
                     </thead>
-
-                    <!-- 검색 -->
-                    <div>
-                        <form class="box-form" action="q_search_result.php" method="get">
-                            <select style="width:20%">
-                                <option value="title">제목</option>
-                                <option value="nickname">글쓴이</option>
-                                <option value="board">내용</option>
-                            </select>
-                            <input type="text" name="search" required="required" />
-                            <button>검색</button>
-                        </form>
-                    </div>
                     <tbody>
                         <?php
 
