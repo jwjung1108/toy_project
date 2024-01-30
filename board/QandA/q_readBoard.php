@@ -262,8 +262,8 @@ session_start();
 
 
 
-                            <div class="text-center">
-                                <a class="box-form" href="/" >뒤로가기</a>
+                            <div>
+                                <a class="btn-sort" href="/" >뒤로가기</a>
                             </div>
 
 
