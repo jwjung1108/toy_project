@@ -48,6 +48,7 @@ $result = mysqli_query($conn, $sql);
             justify-content: center;
             align-items: center;
         }
+        
     </style>
     <script>
         function goToLoginPage() {

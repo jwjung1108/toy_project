@@ -23,6 +23,18 @@ session_start();
             margin-right: 5px;
             /* 티어 아이콘 간의 간격 조절 */
         }
+        .btn-sort {
+            text-decoration: none;
+            padding: 4px 12px;
+            margin: 5px;
+            font-size: 12px;
+            display: inline-block;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.21);
+            border-bottom: 4px solid rgba(0, 0, 0, 0.21);
+            border-radius: 4px;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+        }
     </style>
     <script>
         function goToLoginPage() {
@@ -156,17 +168,15 @@ session_start();
                     </div>
                     <!-- 목록, 수정, 삭제 -->
                     <div id="bo_ser">
-                        <ul>
-                            <li><a href="/">[목록으로]</a></li>
+                        
+                            <a class="btn-sort" href="/">[이전으로]</a>
                             <?php
                             if ($_SESSION['UserID'] == $board['userid']) { ?>
-                                <li><a href="n_replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a></li>
-                                <li><a href="n_deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a></li>
+                                <a class="btn-sort" href="n_replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a>
+                                <a class="btn-sort" href="n_deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a>
                                 <?php
                             }
                             ?>
-
-                        </ul>
                     </div>
                     <div>
                         <?php $download = isset($board['filename']) ? $board['filename'] : '';

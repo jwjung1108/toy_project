@@ -252,8 +252,8 @@ $result = mysqli_query($conn, $sql);
                     </table>
                 </div>
                 <div>
-                    <a href="writeForm.php">작성</a>
-                    <a href="/">목록으로 돌아가기</a>
+                    <a class="btn-sort" href="writeForm.php">작성</a>
+                    <a class="btn-srot" href="/">목록으로 돌아가기</a>
                 </div>
             </section>
 

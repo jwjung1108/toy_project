@@ -52,6 +52,24 @@ $result = mysqli_query($conn, $sql);
             margin-right: 5px;
             /* 티어 아이콘 간의 간격 조절 */
         }
+        .box-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn-sort {
+            text-decoration: none;
+            padding: 4px 12px;
+            margin: 5px;
+            font-size: 12px;
+            display: inline-block;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.21);
+            border-bottom: 4px solid rgba(0, 0, 0, 0.21);
+            border-radius: 4px;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+        }
+
     </style>
     <script>
         function goToLoginPage() {
@@ -140,7 +158,7 @@ $result = mysqli_query($conn, $sql);
                     </h1>
                     <div class="table-responsive">
                         <div id="search_box">
-                            <form action="q_search_result.php" method="get">
+                            <form class="box-form" action="q_search_result.php" method="get">
                                 <select name="catgo">
                                     <option value="title">제목</option>
                                     <option value="nickname">글쓴이</option>
@@ -196,7 +214,7 @@ $result = mysqli_query($conn, $sql);
                     </div>
                 </div>
                 <div class="text-center">
-                    <a href='/' class="back-to-list">목록으로</a>
+                    <a href='/' class="btn-sort">목록으로</a>
                 </div>
             </section>
 

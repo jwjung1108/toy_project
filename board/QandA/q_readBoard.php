@@ -29,6 +29,18 @@ session_start();
             justify-content: center;
             align-items: center;
         }
+        .btn-sort {
+            text-decoration: none;
+            padding: 4px 12px;
+            margin: 5px;
+            font-size: 12px;
+            display: inline-block;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.21);
+            border-bottom: 4px solid rgba(0, 0, 0, 0.21);
+            border-radius: 4px;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+        }
     </style>
     <script>
         function goToLoginPage() {
@@ -161,8 +173,8 @@ session_start();
                     <!-- 목록, 수정, 삭제 -->
                     <div id="bo_ser">
 
-                        <a href="q_replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a>
-                        <a href="q_deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a>
+                        <a class="btn-sort" href="q_replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a>
+                        <a class="btn-sort" href="q_deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a>
 
                     </div>
                     <div>
@@ -251,7 +263,7 @@ session_start();
 
 
                             <div class="text-center">
-                                <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
+                                <a class="box-form" href="/" >뒤로가기</a>
                             </div>
 
 

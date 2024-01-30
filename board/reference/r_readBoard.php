@@ -27,7 +27,20 @@ include '../point/ReadPoint.php';
             display: flex;
             justify-content: center;
             align-items: center;
+        }.btn-sort {
+            text-decoration: none;
+            padding: 4px 12px;
+            margin: 5px;
+            font-size: 12px;
+            display: inline-block;
+            position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.21);
+            border-bottom: 4px solid rgba(0, 0, 0, 0.21);
+            border-radius: 4px;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
         }
+
+        
     </style>
     <script>
         function goToLoginPage() {
@@ -193,9 +206,9 @@ include '../point/ReadPoint.php';
                     <!-- 목록, 수정, 삭제 -->
                     <div id="bo_ser">
 
-                        <a href="r_replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a>
-                        <a href="r_deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a>
-                        <a href="r_boardLike.php?number=<?php echo $board['number']; ?>">[추천]</a>
+                        <a class="btn-sort" href="r_replaceBoard.php?number=<?php echo $board['number']; ?>">[수정]</a>
+                        <a class="btn-sort" href="r_deleteBoard.php?number=<?php echo $board['number']; ?>">[삭제]</a>
+                        <a class="btn-sort" href="r_boardLike.php?number=<?php echo $board['number']; ?>">[추천]</a>
 
                     </div>
                     <div>
@@ -270,7 +283,7 @@ include '../point/ReadPoint.php';
 
 
                             <div>
-                                <a href="/" class="btn btn-secondary">목록으로 돌아가기</a>
+                                <a href="/" class="btn-sort">목록으로 돌아가기</a>
                             </div>
                         </div>
                     </div>

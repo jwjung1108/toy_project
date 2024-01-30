@@ -257,12 +257,12 @@ $result = mysqli_query($conn, $sql);
                 <div>
                     <?php
                     if ($_SESSION['authority'] == 'admin') {
-                        ?><a href="n_writeForm.php">작성</a>
+                        ?><a class="btn-sort" href="n_writeForm.php">작성</a>
                         <?php
                     }
                     ?>
 
-                    <a href="/">목록으로 돌아가기</a>
+                    <a class="btn-sort" href="/">목록으로 돌아가기</a>
                 </div>
 
 
