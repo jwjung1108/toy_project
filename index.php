@@ -132,12 +132,12 @@ session_start();
                             $result_n = mysqli_query($conn, $sql_n); ?>
 
                             <?php
-                            $i = 1;
                             while ($row_n = mysqli_fetch_array($result_n)) {
                                 ?>
                                 <tr>
-                                    <td><a href="n_readBoard.php?number=<?php echo $row['number']; ?>">
-                                            <?php echo $row['title']; ?>
+                                    <td>
+                                        <a href="n_readBoard.php?number=<?php echo $row_n['number']; ?>">
+                                            <?php echo $row_n['title']; ?>
                                         </a>
                                     </td>
                                     <td>
@@ -152,7 +152,7 @@ session_start();
                             ?>
                         </tbody>
                     </table>
-                    
+
                     <a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
                     <p>공지사항입니다.</p>
                     <ul class="actions special">
@@ -164,6 +164,42 @@ session_start();
 
                         <h2><a href="#">자유게시판</a></h2>
                     </header>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">제목</th>
+                                <th scope="col">작성자</th>
+                                <th scope="col">등록일</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            include './connect.php'; // 데이터베이스 연결 정보 포함
+                            
+                            $sql_s = 'SELECT * FROM s_board ORDER BY created DESC LIMIT 5';
+                            $result_s = mysqli_query($conn, $sql_s); ?>
+
+                            <?php
+                            while ($row_s = mysqli_fetch_array($result_s)) {
+                                ?>
+                                <tr>
+                                    <td>
+                                        <a href="n_readBoard.php?number=<?php echo $row_s['number']; ?>">
+                                            <?php echo $row_s['title']; ?>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <?php echo $row_s['nickname']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row_s['created']; ?>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
                     <a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
                     <p>자유게시판입니다.</p>
                     <ul class="actions special">
@@ -175,6 +211,42 @@ session_start();
 
                         <h2><a href="#">자료실</a></h2>
                     </header>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">제목</th>
+                                <th scope="col">작성자</th>
+                                <th scope="col">등록일</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            include './connect.php'; // 데이터베이스 연결 정보 포함
+                            
+                            $sql_r = 'SELECT * FROM r_board ORDER BY created DESC LIMIT 5';
+                            $result_r = mysqli_query($conn, $sql_r); ?>
+
+                            <?php
+                            while ($row_r = mysqli_fetch_array($result_r)) {
+                                ?>
+                                <tr>
+                                    <td>
+                                        <a href="n_readBoard.php?number=<?php echo $row_r['number']; ?>">
+                                            <?php echo $row_r['title']; ?>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <?php echo $row_r['nickname']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row_r['created']; ?>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
                     <a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
                     <p>자료실입니다.</p>
                     <ul class="actions special">
@@ -186,6 +258,42 @@ session_start();
 
                         <h2><a href="#">Q&A</a></h2>
                     </header>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">제목</th>
+                                <th scope="col">작성자</th>
+                                <th scope="col">등록일</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            include './connect.php'; // 데이터베이스 연결 정보 포함
+                            
+                            $sql_q = 'SELECT * FROM q_board ORDER BY created DESC LIMIT 5';
+                            $result_q = mysqli_query($conn, $sql_q); ?>
+
+                            <?php
+                            while ($row_q = mysqli_fetch_array($result_q)) {
+                                ?>
+                                <tr>
+                                    <td>
+                                        <a href="n_readBoard.php?number=<?php echo $row_q['number']; ?>">
+                                            <?php echo $row_q['title']; ?>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <?php echo $row_q['nickname']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row_q['created']; ?>
+                                    </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
                     <a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
                     <p>Q&A입니다.</p>
                     <ul class="actions special">
