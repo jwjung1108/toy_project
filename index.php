@@ -135,22 +135,24 @@ session_start();
                             $i = 1;
                             while ($row_n = mysqli_fetch_array($result_n)) {
                                 ?>
-                                <td><a href="n_readBoard.php?number=<?php echo $row['number']; ?>">
-                                        <?php echo $row['title']; ?>
-                                    </a>
-                                </td>
-                                <td>
-                                    <?php echo $row_n['nickname']; ?>
-                                </td>
-                                <td>
-                                    <?php echo $row_n['created']; ?>
-                                </td>
+                                <tr>
+                                    <td><a href="n_readBoard.php?number=<?php echo $row['number']; ?>">
+                                            <?php echo $row['title']; ?>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <?php echo $row_n['nickname']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row_n['created']; ?>
+                                    </td>
                                 </tr>
                                 <?php
                             }
                             ?>
                         </tbody>
                     </table>
+                    
                     <a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
                     <p>공지사항입니다.</p>
                     <ul class="actions special">
