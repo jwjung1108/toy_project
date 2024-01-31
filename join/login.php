@@ -88,17 +88,17 @@
 
 
             <!-- Posts -->
-            <section class="posts">
-                <form style="display:flex; align-items:center; justify-content: center; flex-direction:column;"
-                    method="POST" action="/join/loginProcess.php">
+            <section style="display:flex; align-items:center; justify-content: center; flex-direction:column;"
+                class="posts">
+                <form method="POST" action="/join/loginProcess.php">
 
                     <label for="exampleFormControlInput1">아이디</label>
                     <input name="id" type="id" id="exampleFormControlInput1" placeholder="id">
-                    < <label for="exampleFormControlInput1">비밀번호</label>
-                        <input name="password" type="password" id="exampleFormControlInput1" placeholder="password">
+                    <label for="exampleFormControlInput1">비밀번호</label>
+                    <input name="password" type="password" id="exampleFormControlInput1" placeholder="password">
 
 
-                        <button type="submit">접속</button>
+                    <button type="submit">접속</button>
 
                 </form>
             </section>
