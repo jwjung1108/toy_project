@@ -135,11 +135,12 @@ session_start();
                             $i = 1;
                             while ($row_n = mysqli_fetch_array($result_n)) {
                                 ?>
-                                <td>
-                                    <?php echo $row_n['title']; ?>
+                                <td><a href="n_readBoard.php?number=<?php echo $row['number']; ?>">
+                                        <?php echo $row['title']; ?>
+                                    </a>
                                 </td>
                                 <td>
-                                    <?php echo $row_n['username']; ?>
+                                    <?php echo $row_n['nickname']; ?>
                                 </td>
                                 <td>
                                     <?php echo $row_n['created']; ?>
