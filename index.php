@@ -104,6 +104,7 @@ session_start();
                     <h2><a href="#">제목<br />
                             이에요</a></h2>
                     <p>사이트 설명.</p>
+
                 </header>
                 <a href="#" class="image main"><img src="images/pic01.jpg" alt="" /></a>
             </article>
@@ -114,6 +115,41 @@ session_start();
                     <header>
                         <h2><a href="#">공지사항</a></h2>
                     </header>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">제목</th>
+                                <th scope="col">작성자</th>
+                                <th scope="col">등록일</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            include './connect.php'; // 데이터베이스 연결 정보 포함
+                            
+                            // 최신 공지사항 5개를 가져오는 쿼리
+                            $sql_n = 'SELECT * FROM n_board ORDER BY important DESC, created DESC LIMIT 5';
+                            $result_n = mysqli_query($conn, $sql_n); ?>
+
+                            <?php
+                            $i = 1;
+                            while ($row_n = mysqli_fetch_array($result_n)) {
+                                ?>
+                                <td>
+                                    <?php echo $row_n['title']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row_n['username']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row_n['created']; ?>
+                                </td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                        </tbody>
+                    </table>
                     <a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
                     <p>공지사항입니다.</p>
                     <ul class="actions special">
