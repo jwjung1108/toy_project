@@ -86,53 +86,51 @@
         <!-- Main -->
         <div id="main">
 
-           
+
             <!-- Posts -->
             <section class="posts">
-                <form method="POST" action="/join/loginProcess.php">
-                    <div>
-                        <div>
-                            <label for="exampleFormControlInput1">아이디</label>
-                            <input name="id" type="id" id="exampleFormControlInput1" placeholder="id">
-                        </div>
-                        <div">
-                            <label for="exampleFormControlInput1">비밀번호</label>
-                            <input name="password" type="password" id="exampleFormControlInput1" placeholder="password">
-                    </div>
+                <form style="display:flex; align-items:center; justify-content: center; flex-direction:column;"
+                    method="POST" action="/join/loginProcess.php">
 
-                    <button type="submit">접속</button>
+                    <label for="exampleFormControlInput1">아이디</label>
+                    <input name="id" type="id" id="exampleFormControlInput1" placeholder="id">
+                    < <label for="exampleFormControlInput1">비밀번호</label>
+                        <input name="password" type="password" id="exampleFormControlInput1" placeholder="password">
+
+
+                        <button type="submit">접속</button>
+
+                </form>
+            </section>
+
+
         </div>
-        </form>
-        </section>
 
-
-    </div>
-
-    <!-- Footer -->
-    <footer id="footer">
-        <section class="split contact">
-            <section class="alt">
-                <h3>무슨</h3>
-                <p>설명적는곳</p>
+        <!-- Footer -->
+        <footer id="footer">
+            <section class="split contact">
+                <section class="alt">
+                    <h3>무슨</h3>
+                    <p>설명적는곳</p>
+                </section>
+                <section>
+                    <h3>무슨</h3>
+                    <p><a href="#">설명적는곳</a></p>
+                </section>
+                <section>
+                    <h3>무슨</h3>
+                    <p><a href="#">설명적는곳</a></p>
+                </section>
             </section>
-            <section>
-                <h3>무슨</h3>
-                <p><a href="#">설명적는곳</a></p>
-            </section>
-            <section>
-                <h3>무슨</h3>
-                <p><a href="#">설명적는곳</a></p>
-            </section>
-        </section>
-    </footer>
+        </footer>
 
-    <!-- Copyright -->
-    <div id="copyright">
-        <ul>
-            <li>&copy; Untitled</li>
-            <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
-        </ul>
-    </div>
+        <!-- Copyright -->
+        <div id="copyright">
+            <ul>
+                <li>&copy; Untitled</li>
+                <li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+            </ul>
+        </div>
 
     </div>
 
