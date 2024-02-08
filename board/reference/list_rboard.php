@@ -174,7 +174,7 @@ $result = mysqli_query($conn, $sql);
                 <!-- 검색 모듈 -->
                 <div>
                     <form class="box-form" action="r_search_result.php" method="get">
-                        <select style="width:20%;">
+                        <select style="width:20%;" name="catgo">
                             <option value="title">제목</option>
                             <option value="nickname">글쓴이</option>
                             <option value="board">내용</option>
