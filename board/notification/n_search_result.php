@@ -151,7 +151,7 @@ $result = mysqli_query($conn, $sql);
             <section class="post">
                 <div class="container search-results">
                     <h1 class="text-center">검색결과:
-                        <?php echo htmlspecialchars($search_con); ?>
+                        <?php echo htmlspecialchars($search); ?>
                     </h1>
                     <div class="table-responsive">
                         <div >
