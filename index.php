@@ -184,7 +184,7 @@ session_start();
                                 ?>
                                 <tr>
                                     <td>
-                                        <a href="n_readBoard.php?number=<?php echo $row_s['number']; ?>">
+                                        <a href="board/standard/readBoard.php?number=<?php echo $row_s['number']; ?>">
                                             <?php echo $row_s['title']; ?>
                                         </a>
                                     </td>
